@@ -73,7 +73,7 @@ SMA20_securities = [
     ['CRWD', 'NASDAQ'],
     ['RIO', 'NYSE'],
     ['BHP', 'NYSE'],
-    ['DIA', 'ARCA'],#############
+    ['DIA', 'ARCA'],
     ['EBAY', 'NASDAQ'],
     ['CHWY', 'NYSE'],
     ['MARA', 'NASDAQ'],
