@@ -5,199 +5,8 @@ from datetime import datetime
 import mplfinance as mpf
 from datetime import date
 today_date = date.today().strftime('%m-%d-%y')
-
-SMA9_securities = [
-    ['MSOS', 'ARCA'],
-    ['CGC', 'NASDAQ'],
-    ['ESTC', 'NYSE'],
-    ['ETSY', 'NASDAQ'],
-    # ['FNV', 'NYSE'],
-    # ['GDX', 'ARCA'],
-    # ['GOLD', 'NYSE'],
-    ['IWM', 'ARCA'],
-    ['TLRY', 'NASDAQ'],
-    ['TLT', 'NASDAQ'],
-    ['BABA', 'NYSE'],
-    ['BGNE', 'NASDAQ'],
-    ['BILI', 'NASDAQ'],
-    ['DQ', 'NYSE'],
-    ['FUTU', 'NASDAQ'],
-    ['FXI', 'ARCA'],
-    ['GDS', 'NASDAQ'],
-    ['HTHT', 'NASDAQ'],
-    ['IQ', 'NASDAQ'],
-    ['JMIA', 'NYSE'],
-    ['KWEB', 'ARCA'],
-    ['MCHI', 'NASDAQ'],
-    ['NIU', 'NASDAQ'],
-    ['NTES', 'NASDAQ'],
-    ['SOL', 'NYSE'],
-    ['TAL', 'NYSE'],
-    ['ZLAB', 'NASDAQ'],
-    ['ZTO', 'NYSE'],
-    ['MU', 'NASDAQ'],
-    ['LRCX', 'NASDAQ'],
-    ['KLAC', 'NASDAQ'],
-    ['TDOC', 'NYSE'],
-    ['XPEV', 'NYSE'],
-    ['BIDU', 'NASDAQ'],
-    ['CTEC', 'NASDAQ'],
-    ['UUP', 'ARCA'],
-    ['SPCE', 'NYSE'],
-    ['IRDM', 'NASDAQ'],
-    ['DDD', 'NYSE'],
-    ['IBB', 'NASDAQ'],
-    ['ATVI', 'NASDAQ'],
-    ['DADA', 'NASDAQ']
-]
-
-SMA20_securities = [
-    ['CAT', 'NYSE'],
-    ['VFF', 'NASDAQ'],
-    ['RIOT', 'NASDAQ'],
-    ['CRON', 'NASDAQ'],
-    ['XLF', 'ARCA'],
-    ['CRWD', 'NASDAQ'],
-    ['RIO', 'NYSE'],
-    ['BHP', 'NYSE'],
-    ['DIA', 'ARCA'],
-    ['EBAY', 'NASDAQ'],
-    ['CHWY', 'NYSE'],
-    ['MARA', 'NASDAQ'],
-    ['EEM', 'ARCA'],
-    ['FVRR', 'NYSE'],
-    ['VNET', 'NASDAQ'],
-    ['GRWG', 'NASDAQ'],
-    ['FCEL', 'NASDAQ'],
-    ['XPER', 'NASDAQ'],
-    ['ROKU', 'NASDAQ'],
-    ['USO', 'ARCA'],
-    ['SPY', 'ARCA'],
-    ['XRT', 'ARCA'],
-    ['ZS', 'NASDAQ'],
-    ['VIPS', 'NYSE'],
-    ['PLUG', 'NASDAQ'],
-    ['MLM', 'NYSE'],
-    ['TAN', 'ARCA'],
-    ['PYPL', 'NASDAQ'],
-    ['APPS', 'NASDAQ'],
-    ['PENN', 'NASDAQ'],
-    ['MELI', 'NASDAQ'],
-    ['JPM', 'NYSE'],
-    ['ENPH', 'NASDAQ'],
-    ['PBW', 'ARCA'],
-    ['ICLN', 'NASDAQ'],
-    ['SPWR', 'NASDAQ'],
-    ['LMND', 'NYSE'],
-    ['CYBR', 'NASDAQ'],
-    ['SKLZ', 'NYSE'],
-    ['NXPI', 'NASDAQ'],
-    ['ARKK', 'ARCA'],
-    ['MGNI', 'NASDAQ'],
-    ['IWB', 'ARCA'],
-    ['YOLO', 'ARCA'],
-    ['THCX', 'ARCA'],
-    ['MJ', 'ARCA'],
-    ['APHA', 'NASDAQ'],
-    ['TLRY', 'NASDAQ'],
-    ['MAXR', 'NYSE'],
-    ['SRAC', 'NASDAQ'],
-    ['DE', 'NYSE']
-]
-
-SMA50_securities = [
-    ['SLV', 'ARCA'],
-    ['AAPL', 'NASDAQ'],
-    ['BBY', 'NYSE'],
-    ['CSIQ', 'NASDAQ'],
-    ['DDOG', 'NASDAQ'],
-    ['UUUU', 'AMEX'],
-    ['CCJ', 'NYSE'],
-    ['NXE', 'AMEX'],
-    ['DECK', 'NYSE'],
-    ['DOCU', 'NASDAQ'],
-    ['JO', 'ARCA'],
-    ['FSLR', 'NASDAQ'],
-    ['GPS', 'NYSE'],
-    ['HD', 'NYSE'],
-    ['LOW', 'NYSE'],
-    ['LI', 'NASDAQ'],
-    ['NET', 'NYSE'],
-    ['PINS', 'NYSE'],
-    ['PTON', 'NASDAQ'],
-    ['OIH', 'ARCA'],
-    ['XLE', 'ARCA'],
-    ['TSLA', 'NASDAQ'],
-    ['QCOM', 'NASDAQ'],
-    ['QQQ', 'NYSE'],
-    ['RUN', 'NASDAQ'],
-    ['BLNK', 'NASDAQ'],
-    ['SBUX', 'NASDAQ'],
-    ['SMH', 'NASDAQ'],
-    ['SNAP', 'NYSE'],
-    ['SQ', 'NYSE'],
-    ['TGT', 'NYSE'],
-    ['TWLO', 'NYSE'],
-    ['UNP', 'NYSE'],
-    ['XHB', 'ARCA'],
-    ['Z', 'NASDAQ'],
-    ['JD', 'NASDAQ'],
-    ['NIO', 'NYSE'],
-    ['PDD', 'NASDAQ'],
-    # ['FUBO', 'NYSE'],
-    ['IGV', 'BATS'],
-    ['TEAM', 'NASDAQ'],
-    ['SEDG', 'NASDAQ'],
-    ['INTU', 'NASDAQ'],
-    ['GOOGL', 'NASDAQ'],
-    ['NVAX', 'NASDAQ'],
-    ['OKTA', 'NASDAQ'],
-    ['SE', 'NYSE'],
-    ['CHDN', 'NASDAQ'],
-    ['CGC', 'NASDAQ'],
-    ['IIPR', 'NYSE'],
-    ['ONEM', 'NASDAQ'],
-    ['ANTM', 'NYSE'],
-    ['FTCH', 'NYSE'],
-    # ['PLTR', 'NYSE'],
-    ['ACB', 'NYSE'],
-    ['ZI', 'NASDAQ'],
-    ['SHOP', 'NYSE'],
-    ['LAZR', 'NASDAQ'],
-    ['CRSR', 'NASDAQ'],
-    ['NEM', 'NYSE'],
-    ['MDB', 'NASDAQ'],
-    ['FTNT', 'NASDAQ'],
-    ['BZH', 'NYSE'],
-    ['XLK', 'ARCA']
-]
-
-SMA200_securities = [
-    ['GLD', 'ARCA'],
-    ['ADBE', 'NASDAQ'],
-    ['COST', 'ARCA'],
-    ['FSLY', 'NYSE'],
-    ['MSFT', 'NASDAQ'],
-    ['NFLX', 'NASDAQ'],
-    ['NVDA', 'NASDAQ'],
-    ['PG', 'NYSE'],
-    ['TTD', 'NASDAQ'],
-    ['TWTR', 'NYSE'],
-    ['UPS', 'NYSE'],
-    ['WMT', 'NYSE'],
-    ['EDU', 'NYSE'],
-    ['DOYU', 'NASDAQ'],
-    ['JKS', 'NYSE'],
-    ['NFLX', 'NASDAQ'],
-    ['FB', 'NASDAQ'],
-    ['CRM', 'NYSE'],
-    ['AMZN', 'NASDAQ'],
-    ['ZM', 'NASDAQ'],
-    ['MRNA', 'NASDAQ'],
-    ['AMD', 'NASDAQ']
-]
-
-hits = []
+import os
+from stock_buckets import *
 
 def fetch_data(ticker, prime_exch, data_barcount):
     stock = Stock(ticker, 'SMART', 'USD', primaryExchange = prime_exch)
@@ -276,15 +85,22 @@ def plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, numofdays, t
                 addplot=[sma9dict, sma20dict, sma50dict, sma200dict, lowerbbdict, upperbbdict],
                 figscale=.9,
                 tight_layout=False,
-                savefig=f'''{ticker}_{defining_ma}SMA-RETEST_{today_date}.pdf''')
+                savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
 
-
+hits = []
 
 
 ib = IB()
 ib.connect('127.0.0.1', 4001, clientId=1)
 
+# path = os.getcwd()
+# print(path)
+path = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}'''
+os.mkdir(path)
+
+
 for security in range(len(SMA9_securities)):
+    # ib.sleep(1)
     fetched_data = fetch_data(SMA9_securities[security][0], SMA9_securities[security][1], '365 D')
     closing_prices = extract_closing(fetched_data)
     sma9 = create_masubplot(9, closing_prices)
@@ -296,12 +112,13 @@ for security in range(len(SMA9_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA9_securities[security][0], 9)
+        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA9_securities[security][0], '9SMA')
     else:
         print(f'''{SMA9_securities[security][0]} not in buying range.''')
 print(hits)
 
 for security in range(len(SMA20_securities)):
+    # ib.sleep(1)
     fetched_data = fetch_data(SMA20_securities[security][0], SMA20_securities[security][1], '365 D')
     closing_prices = extract_closing(fetched_data)
     sma20 = create_masubplot(20, closing_prices)
@@ -313,12 +130,13 @@ for security in range(len(SMA20_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA20_securities[security][0], 20)
+        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA20_securities[security][0], '20SMA')
     else:
         print(f'''{SMA20_securities[security][0]} not in buying range.''')
 print(hits)
 
 for security in range(len(SMA50_securities)):
+    # ib.sleep(1)
     fetched_data = fetch_data(SMA50_securities[security][0], SMA50_securities[security][1], '365 D')
     closing_prices = extract_closing(fetched_data)
     sma50 = create_masubplot(50, closing_prices)
@@ -330,12 +148,13 @@ for security in range(len(SMA50_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA50_securities[security][0], 50)
+        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA50_securities[security][0], '50SMA')
     else:
         print(f'''{SMA50_securities[security][0]} not in buying range.''')
 print(hits)
 
 for security in range(len(SMA200_securities)):
+    # ib.sleep(1)
     fetched_data = fetch_data(SMA200_securities[security][0], SMA200_securities[security][1], '365 D')
     closing_prices = extract_closing(fetched_data)
     sma200 = create_masubplot(200, closing_prices)
@@ -347,7 +166,43 @@ for security in range(len(SMA200_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA200_securities[security][0], 200)
+        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA200_securities[security][0], '200SMA')
     else:
         print(f'''{SMA200_securities[security][0]} not in buying range.''')
+print(hits)
+
+for security in range(len(lowerBB_securities)):
+    # ib.sleep(1)
+    fetched_data = fetch_data(lowerBB_securities[security][0], lowerBB_securities[security][1], '365 D')
+    closing_prices = extract_closing(fetched_data)
+    lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+    if closing_prices[len(closing_prices)-1] < (1 * lowerbb['data'][len(lowerbb['data'])-1]):
+        hits.append(lowerBB_securities[security][0])
+        sma9 = create_masubplot(9, closing_prices)
+        sma20 = create_masubplot(20, closing_prices)
+        sma50 = create_masubplot(50, closing_prices)
+        sma200 = create_masubplot(200, closing_prices)
+        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+        pdata = reformat_IBdata(fetched_data, 120)
+        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, lowerBB_securities[security][0], 'LOWERBB')
+    else:
+        print(f'''{lowerBB_securities[security][0]} not in buying range.''')
+print(hits)
+
+for security in range(len(upperBB_securities)):
+    # ib.sleep(1)
+    fetched_data = fetch_data(upperBB_securities[security][0], upperBB_securities[security][1], '365 D')
+    closing_prices = extract_closing(fetched_data)
+    upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+    if closing_prices[len(closing_prices)-1] > (1 * upperbb['data'][len(upperbb['data'])-1]):
+        hits.append(upperBB_securities[security][0])
+        sma9 = create_masubplot(9, closing_prices)
+        sma20 = create_masubplot(20, closing_prices)
+        sma50 = create_masubplot(50, closing_prices)
+        sma200 = create_masubplot(200, closing_prices)
+        lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+        pdata = reformat_IBdata(fetched_data, 120)
+        plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, upperBB_securities[security][0], 'UPPERBB')
+    else:
+        print(f'''{upperBB_securities[security][0]} not in buying range.''')
 print(hits)
