@@ -1,6 +1,5 @@
 Next Steps:
-1) ADD BOLLINGER BAND ALERTS FOR ALL STOCKS
-2) Find out why I don't have permission for FUBU market data
-3) Upload to new daily folder in Drive 
-4) Upload directly to twitter or stocktwits
-5) Autonomous trading 
+1) Find out why I don't have permission for FUBU market data
+2) Upload to new daily folder in Drive 
+3) Upload directly to twitter or stocktwits
+4) Autonomous trading 
