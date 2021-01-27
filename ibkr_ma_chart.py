@@ -20,13 +20,13 @@ hits = []
 
 # list of securities to cycle through
 SMA9_securities = [
-    ['MSOS', 'ARCA'],
+    ['MSOS', 'ARCA'],#100
     ['CGC', 'NASDAQ'],
     ['ESTC', 'NYSE'],
     ['ETSY', 'NASDAQ'],
-    # ['FNV', 'NYSE'],
-    # ['GDX', 'ARCA'],
-    # ['GOLD', 'NYSE'],
+    ['FNV', 'NYSE'],
+    ['GDX', 'ARCA'],
+    ['GOLD', 'NYSE'],
     ['IWM', 'ARCA'],
     ['TLRY', 'NASDAQ'],
     ['TLT', 'NASDAQ'],
@@ -52,16 +52,16 @@ SMA9_securities = [
     ['LRCX', 'NASDAQ'],
     ['KLAC', 'NASDAQ'],
     ['TDOC', 'NYSE'],
-    ['XPEV', 'NYSE'],
+    ['XPEV', 'NYSE'],#104
     ['BIDU', 'NASDAQ'],
-    ['CTEC', 'NASDAQ'],
+    ['CTEC', 'NASDAQ'],#60
     ['UUP', 'ARCA'],
     ['SPCE', 'NYSE'],
     ['IRDM', 'NASDAQ'],
     ['DDD', 'NYSE'],
     ['IBB', 'NASDAQ'],
     ['ATVI', 'NASDAQ'],
-    ['DADA', 'NASDAQ']
+    ['DADA', 'NASDAQ']#161
 ]
 
 SMA20_securities = [
@@ -80,11 +80,11 @@ SMA20_securities = [
     ['EEM', 'ARCA'],
     ['FVRR', 'NYSE'],
     ['VNET', 'NASDAQ'],
-    ['GRWG', 'NASDAQ'],
+    ['GRWG', 'NASDAQ'],#290
     ['FCEL', 'NASDAQ'],
-    ['XPER', 'NASDAQ'],
+    ['XPER', 'NASDAQ'],#298
     ['ROKU', 'NASDAQ'],
-    ['USO', 'ARCA'],
+    ['USO', 'ARCA'],#289
     ['SPY', 'ARCA'],
     ['XRT', 'ARCA'],
     ['ZS', 'NASDAQ'],
@@ -101,20 +101,20 @@ SMA20_securities = [
     ['PBW', 'ARCA'],
     ['ICLN', 'NASDAQ'],
     ['SPWR', 'NASDAQ'],
-    ['LMND', 'NYSE'],
+    ['LMND', 'NYSE'],#143
     ['CYBR', 'NASDAQ'],
-    ['SKLZ', 'NYSE'],
+    ['SKLZ', 'NYSE'],#189
     ['NXPI', 'NASDAQ'],
     ['ARKK', 'ARCA'],
-    ['MGNI', 'NASDAQ'],
+    ['MGNI', 'NASDAQ'],#159
     ['IWB', 'ARCA'],
     ['YOLO', 'ARCA'],
     ['THCX', 'ARCA'],
     ['MJ', 'ARCA'],
-    ['APHA', 'NASDAQ'],
+    ['APHA', 'NASDAQ'],#300
     ['TLRY', 'NASDAQ'],
     ['MAXR', 'NYSE'],
-    ['SRAC', 'NASDAQ'],
+    ['SRAC', 'NASDAQ'],#271
     ['DE', 'NYSE']
 ]
 
@@ -134,11 +134,11 @@ SMA50_securities = [
     ['GPS', 'NYSE'],
     ['HD', 'NYSE'],
     ['LOW', 'NYSE'],
-    ['LI', 'NASDAQ'],
+    ['LI', 'NASDAQ'],#124
     ['NET', 'NYSE'],
     ['PINS', 'NYSE'],
     ['PTON', 'NASDAQ'],
-    ['OIH', 'ARCA'],
+    ['OIH', 'ARCA'],#285
     ['XLE', 'ARCA'],
     ['TSLA', 'NASDAQ'],
     ['QCOM', 'NASDAQ'],
@@ -146,7 +146,7 @@ SMA50_securities = [
     ['RUN', 'NASDAQ'],
     ['BLNK', 'NASDAQ'],
     ['SBUX', 'NASDAQ'],
-    ['SMH', 'NASDAQ'],
+    ['SMH', 'NASDAQ'],#283
     ['SNAP', 'NYSE'],
     ['SQ', 'NYSE'],
     ['TGT', 'NYSE'],
@@ -169,15 +169,15 @@ SMA50_securities = [
     ['CHDN', 'NASDAQ'],
     ['CGC', 'NASDAQ'],
     ['IIPR', 'NYSE'],
-    ['ONEM', 'NASDAQ'],
+    ['ONEM', 'NASDAQ'],#249
     ['ANTM', 'NYSE'],
     ['FTCH', 'NYSE'],
     # ['PLTR', 'NYSE'],
-    ['ACB', 'NYSE'],
+    ['ACB', 'NYSE'],#292
     ['ZI', 'NASDAQ'],
     ['SHOP', 'NYSE'],
     ['LAZR', 'NASDAQ'],
-    ['CRSR', 'NASDAQ'],
+    ['CRSR', 'NASDAQ'],#86
     ['NEM', 'NYSE'],
     ['MDB', 'NASDAQ'],
     ['FTNT', 'NASDAQ'],
@@ -595,3 +595,4 @@ while True:
         if SMA200_securities[ticker][0] not in hits:
             ma_chart_200(SMA200_securities[ticker][0], SMA200_securities[ticker][1], 150)
             ib.sleep(1)
+
