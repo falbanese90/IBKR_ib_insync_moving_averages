@@ -74,7 +74,7 @@ def reformat_IBdata(fetched_data, numofdays):
     return pdata
     print(pdata)
 
-def plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, numofdays, ticker, defining_ma):
+def plot_d(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, numofdays, ticker, defining_ma):
     sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
     sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
     sma50dict = mpf.make_addplot(sma50['data'][-numofdays:], color='#3a7821')
@@ -87,7 +87,7 @@ def plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, numofdays, t
                 tight_layout=False,
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
 
-def plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, numofdays, ticker, defining_ma):
+def plot_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, numofdays, ticker, defining_ma):
     sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
     sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
     sma50dict = mpf.make_addplot(sma50['data'][-numofdays:], color='#3a7821')
@@ -99,7 +99,7 @@ def plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, numofdays, ticker
                 tight_layout=False,
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
 
-def plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defining_ma):
+def plot_j2(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defining_ma):
     sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
     sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
     lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c')
@@ -110,7 +110,7 @@ def plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defin
                 tight_layout=False,
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
 
-def plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defining_ma):
+def plot_j3(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defining_ma):
     sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
     sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
     lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c')
@@ -120,6 +120,28 @@ def plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defin
                 figscale=.9,
                 tight_layout=False,
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
+
+def plot_total(bucket, bucket_nickname):
+    try:
+        plot_d(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, bucket[security][0], bucket_nickname)
+    except ValueError:
+        try:
+            plot_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, bucket[security][0], bucket_nickname)
+        except ValueError:
+            try:
+                plot_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, bucket[security][0], bucket_nickname)
+            except ValueError:
+                try:
+                    plot_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, bucket[security][0], bucket_nickname)
+                except ValueError:
+                    print(f'''pdata: {len(pdata[-40:])}''')
+                    print(f'''Closings: {len(closing_prices[-40:])}''')
+                    print(f'''9SMA: {len(sma9['data'][-40:])}''')
+                    print(f'''20SMA: {len(sma20['data'][-40:])}''')
+                    print(f'''50SMA: {len(sma50['data'][-40:])}''')
+                    print(f'''200SMA: {len(sma200['data'][-40:])}''')
+                    print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
+                    print(f'''upperBB: {len(upperbb['data'][-40:])}''')
 
 hits = []
 
@@ -145,26 +167,7 @@ for security in range(len(SMA9_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        try:
-            plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA9_securities[security][0], '9SMA')
-        except ValueError:
-            try:
-                plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, SMA9_securities[security][0], '9SMA')
-            except ValueError:
-                try:
-                    plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, SMA9_securities[security][0], '9SMA')
-                except ValueError:
-                    try:
-                        plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, SMA9_securities[security][0], '9SMA')
-                    except ValueError:
-                        print(f'''pdata: {len(pdata[-40:])}''')
-                        print(f'''Closings: {len(closing_prices[-40:])}''')
-                        print(f'''9SMA: {len(sma9['data'][-40:])}''')
-                        print(f'''20SMA: {len(sma20['data'][-40:])}''')
-                        print(f'''50SMA: {len(sma50['data'][-40:])}''')
-                        print(f'''200SMA: {len(sma200['data'][-40:])}''')
-                        print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
-                        print(f'''upperBB: {len(upperbb['data'][-40:])}''')
+        plot_total(SMA9_securities, '9SMA')
     else:
         print(f'''{SMA9_securities[security][0]} not in buying range.''')
 print(hits)
@@ -182,26 +185,7 @@ for security in range(len(SMA20_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        try:
-            plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA20_securities[security][0], '20SMA')
-        except ValueError:
-            try:
-                plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, SMA20_securities[security][0], '20SMA')
-            except ValueError:
-                try:
-                    plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, SMA20_securities[security][0], '20SMA')
-                except ValueError:
-                    try:
-                        plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, SMA20_securities[security][0], '20SMA')
-                    except ValueError:
-                        print(f'''pdata: {len(pdata[-40:])}''')
-                        print(f'''Closings: {len(closing_prices[-40:])}''')
-                        print(f'''9SMA: {len(sma9['data'][-40:])}''')
-                        print(f'''20SMA: {len(sma20['data'][-40:])}''')
-                        print(f'''50SMA: {len(sma50['data'][-40:])}''')
-                        print(f'''200SMA: {len(sma200['data'][-40:])}''')
-                        print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
-                        print(f'''upperBB: {len(upperbb['data'][-40:])}''')
+        plot_total(SMA20_securities, '20SMA')
     else:
         print(f'''{SMA20_securities[security][0]} not in buying range.''')
 print(hits)
@@ -219,26 +203,7 @@ for security in range(len(SMA50_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        try:
-            plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA50_securities[security][0], '50SMA')
-        except ValueError:
-            try:
-                plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, SMA50_securities[security][0], '50SMA')
-            except ValueError:
-                try:
-                    plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, SMA50_securities[security][0], '50SMA')
-                except ValueError:
-                    try:
-                        plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, SMA50_securities[security][0], '50SMA')
-                    except ValueError:
-                        print(f'''pdata: {len(pdata[-40:])}''')
-                        print(f'''Closings: {len(closing_prices[-40:])}''')
-                        print(f'''9SMA: {len(sma9['data'][-40:])}''')
-                        print(f'''20SMA: {len(sma20['data'][-40:])}''')
-                        print(f'''50SMA: {len(sma50['data'][-40:])}''')
-                        print(f'''200SMA: {len(sma200['data'][-40:])}''')
-                        print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
-                        print(f'''upperBB: {len(upperbb['data'][-40:])}''')
+        plot_total(SMA50_securities, '50SMA')
     else:
         print(f'''{SMA50_securities[security][0]} not in buying range.''')
 print(hits)
@@ -256,26 +221,7 @@ for security in range(len(SMA200_securities)):
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        try:
-            plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, SMA200_securities[security][0], '200SMA')
-        except ValueError:
-            try:
-                plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, SMA200_securities[security][0], '200SMA')
-            except ValueError:
-                try:
-                    plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, SMA200_securities[security][0], '200SMA')
-                except ValueError:
-                    try:
-                        plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, SMA200_securities[security][0], '200SMA')
-                    except ValueError:
-                        print(f'''pdata: {len(pdata[-40:])}''')
-                        print(f'''Closings: {len(closing_prices[-40:])}''')
-                        print(f'''9SMA: {len(sma9['data'][-40:])}''')
-                        print(f'''20SMA: {len(sma20['data'][-40:])}''')
-                        print(f'''50SMA: {len(sma50['data'][-40:])}''')
-                        print(f'''200SMA: {len(sma200['data'][-40:])}''')
-                        print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
-                        print(f'''upperBB: {len(upperbb['data'][-40:])}''')
+        plot_total(SMA200_securities, '200SMA')
     else:
         print(f'''{SMA200_securities[security][0]} not in buying range.''')
 print(hits)
@@ -293,26 +239,7 @@ for security in range(len(lowerBB_securities)):
         sma200 = create_masubplot(200, closing_prices)
         upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        try:
-            plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, lowerBB_securities[security][0], 'LowerBB')
-        except ValueError:
-            try:
-                plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, lowerBB_securities[security][0], 'LowerBB')
-            except ValueError:
-                try:
-                    plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, lowerBB_securities[security][0], 'LowerBB')
-                except ValueError:
-                    try:
-                        plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, lowerBB_securities[security][0], 'LowerBB')
-                    except ValueError:
-                        print(f'''pdata: {len(pdata[-40:])}''')
-                        print(f'''Closings: {len(closing_prices[-40:])}''')
-                        print(f'''9SMA: {len(sma9['data'][-40:])}''')
-                        print(f'''20SMA: {len(sma20['data'][-40:])}''')
-                        print(f'''50SMA: {len(sma50['data'][-40:])}''')
-                        print(f'''200SMA: {len(sma200['data'][-40:])}''')
-                        print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
-                        print(f'''upperBB: {len(upperbb['data'][-40:])}''')
+        plot_total(lowerBB_securities, 'LowerBB')
     else:
         print(f'''{lowerBB_securities[security][0]} not in buying range.''')
 print(hits)
@@ -330,26 +257,7 @@ for security in range(len(upperBB_securities)):
         sma200 = create_masubplot(200, closing_prices)
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
         pdata = reformat_IBdata(fetched_data, 120)
-        try:
-            plot_pdata(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, upperBB_securities[security][0], 'UpperBB')
-        except ValueError:
-            try:
-                plot_pdata_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, upperBB_securities[security][0], 'UpperBB')
-            except ValueError:
-                try:
-                    plot_pdata_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, upperBB_securities[security][0], 'UpperBB')
-                except ValueError:
-                    try:
-                        plot_pdata_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, upperBB_securities[security][0], 'UpperBB')
-                    except ValueError:
-                        print(f'''pdata: {len(pdata[-40:])}''')
-                        print(f'''Closings: {len(closing_prices[-40:])}''')
-                        print(f'''9SMA: {len(sma9['data'][-40:])}''')
-                        print(f'''20SMA: {len(sma20['data'][-40:])}''')
-                        print(f'''50SMA: {len(sma50['data'][-40:])}''')
-                        print(f'''200SMA: {len(sma200['data'][-40:])}''')
-                        print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
-                        print(f'''upperBB: {len(upperbb['data'][-40:])}''')
+        plot_total(upperBB_securities, 'UpperBB')
     else:
         print(f'''{upperBB_securities[security][0]} not in buying range.''')
 print(hits)
