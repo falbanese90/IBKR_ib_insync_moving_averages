@@ -1,10 +1,7 @@
 SMA9_securities = [
-    ['MSOS', 'ARCA'], #99 days
-    ['ESTC', 'NYSE'],
-    ['FNV', 'NYSE'],
-    ['GDX', 'ARCA'],
-    ['GOLD', 'NYSE'],
-    ['IWM', 'ARCA'],
+    # ['FNV', 'NYSE'],
+    # ['GDX', 'ARCA'],
+    # ['GOLD', 'NYSE'],
     ['TLT', 'NASDAQ'],
     ['BABA', 'NYSE'],
     ['BGNE', 'NASDAQ'],
@@ -21,47 +18,47 @@ SMA9_securities = [
     ['NTES', 'NASDAQ'],
     ['SOL', 'NYSE'],
     ['TAL', 'NYSE'],
-    ['ZLAB', 'NASDAQ'],
     ['ZTO', 'NYSE'],
-    ['LRCX', 'NASDAQ'],
     ['KLAC', 'NASDAQ'],
     ['TDOC', 'NYSE'],
-    ['XPEV', 'NYSE'],
     ['BIDU', 'NASDAQ'],
-    ['CTEC', 'NASDAQ'],
     ['UUP', 'ARCA'],
     ['SPCE', 'NYSE'],
     ['IRDM', 'NASDAQ'],
     ['DDD', 'NYSE'],
     ['IBB', 'NASDAQ'],
-    ['ATVI', 'NASDAQ'],
-    ['DADA', 'NASDAQ']
 ]
 
 SMA20_securities = [
+    ['USO', 'ARCA'],#289; Exclude 200SMA
+    ['ONEM', 'NASDAQ'],#249; Exclude 200SMA
+    ['DADA', 'NASDAQ'],#161; Exclude 50SMA 200SMA
+    ['MGNI', 'NASDAQ'],#159; Exclude 50SMA 200SMA
+    ['LMND', 'NYSE'],#143; Exclude 50SMA 200SMA
+    ['LI', 'NASDAQ'],#124; 40 days, only include 9SMA and 20SMA
+    ['XPEV', 'NYSE'],#104; 40 days, only include 9SMA and 20SMA
+    ['MSOS', 'ARCA'],#100; 40 days, only include 9SMA and 20SMA
+    ['CRSR', 'NASDAQ'],#86; 40 days, only include 9SMA and 20SMA
+    ['CTEC', 'NASDAQ'],#60; 40 days, only include 9SMA and 20SMA
     ['VFF', 'NASDAQ'],
     ['CRON', 'NASDAQ'],
     ['RIO', 'NYSE'],
     ['BHP', 'NYSE'],
+    ['ATVI', 'NASDAQ'],
     ['DIA', 'ARCA'],
     ['EBAY', 'NASDAQ'],
     ['MU', 'NASDAQ'],
     ['CHWY', 'NYSE'],
     ['MARA', 'NASDAQ'],
     ['EEM', 'ARCA'],
-    ['FVRR', 'NYSE'],
+    ['ZLAB', 'NASDAQ'],
     ['VNET', 'NASDAQ'],
-    ['GRWG', 'NASDAQ'],
     ['FCEL', 'NASDAQ'],
-    ['XPER', 'NASDAQ'], #299 days
     ['ROKU', 'NASDAQ'],
-    ['USO', 'ARCA'],
     ['SPY', 'ARCA'],
     ['XRT', 'ARCA'],
-    ['ZS', 'NASDAQ'],
-    ['VIPS', 'NYSE'],
+    ['LRCX', 'NASDAQ'],
     ['PLUG', 'NASDAQ'],
-    ['MLM', 'NYSE'],
     ['TAN', 'ARCA'],
     ['PYPL', 'NASDAQ'],
     ['APPS', 'NASDAQ'],
@@ -71,36 +68,44 @@ SMA20_securities = [
     ['PBW', 'ARCA'],
     ['ICLN', 'NASDAQ'],
     ['SPWR', 'NASDAQ'],
-    ['LMND', 'NYSE'],
     ['CYBR', 'NASDAQ'],
-    ['SKLZ', 'NYSE'],
-    ['NXPI', 'NASDAQ'],
     ['ARKK', 'ARCA'],
-    ['MGNI', 'NASDAQ'],
     ['IWB', 'ARCA'],
     ['YOLO', 'ARCA'],
     ['THCX', 'ARCA'],
     ['MJ', 'ARCA'],
-    ['APHA', 'NASDAQ'],
     ['TLRY', 'NASDAQ'],
     ['MAXR', 'NYSE'],
-    ['SRAC', 'NASDAQ'],
     ['DE', 'NYSE']
 ]
 
 SMA50_securities = [
+    ['APHA', 'NASDAQ'],#300; Exclude 200SMA
+    ['XPER', 'NASDAQ'],#298; Exclude 200SMA
+    ['ACB', 'NYSE'],#292; Exclude 200SMA
+    ['GRWG', 'NASDAQ'],#290; Exclude 200SMA
+    ['OIH', 'ARCA'],#285; Exclude 200SMA
+    ['SMH', 'NASDAQ'],#283; Exclude 200SMA
+    ['SRAC', 'NASDAQ'],#271; Exclude 200SMA
     ['SLV', 'ARCA'],
     ['AAPL', 'NASDAQ'],
     ['BBY', 'NYSE'],
     ['CSIQ', 'NASDAQ'],
     ['DDOG', 'NASDAQ'],
+    ['VIPS', 'NYSE'],
     ['UUUU', 'AMEX'],
     ['JPM', 'NYSE'],
+    ['MLM', 'NYSE'],
+    ['ESTC', 'NYSE'],
     ['CCJ', 'NYSE'],
+    ['ZS', 'NASDAQ'],
     ['NXE', 'AMEX'],
+    ['FVRR', 'NYSE'],
     ['RIOT', 'NASDAQ'],
+    ['NXPI', 'NASDAQ'],
     ['DECK', 'NYSE'],
     ['DOCU', 'NASDAQ'],
+    ['IWM', 'ARCA'],
     ['JO', 'ARCA'],
     ['FSLR', 'NASDAQ'],
     ['XLF', 'ARCA'],
@@ -109,11 +114,9 @@ SMA50_securities = [
     ['HD', 'NYSE'],
     ['LOW', 'NYSE'],
     ['CRWD', 'NASDAQ'],
-    ['LI', 'NASDAQ'], #123 days
     ['NET', 'NYSE'],
     ['PINS', 'NYSE'],
     ['PTON', 'NASDAQ'],
-    ['OIH', 'ARCA'],
     ['XLE', 'ARCA'],
     ['TSLA', 'NASDAQ'],
     ['QCOM', 'NASDAQ'],
@@ -122,7 +125,6 @@ SMA50_securities = [
     ['RUN', 'NASDAQ'],
     ['BLNK', 'NASDAQ'],
     ['SBUX', 'NASDAQ'],
-    ['SMH', 'NASDAQ'],
     ['SNAP', 'NYSE'],
     ['SQ', 'NYSE'],
     ['TGT', 'NYSE'],
@@ -143,13 +145,10 @@ SMA50_securities = [
     ['CHDN', 'NASDAQ'],
     ['CGC', 'NASDAQ'],
     ['IIPR', 'NYSE'],
-    ['ONEM', 'NASDAQ'],
     ['FTCH', 'NYSE'],
-    ['ACB', 'NYSE'],
     ['ZI', 'NASDAQ'],
     ['SHOP', 'NYSE'],
     ['LAZR', 'NASDAQ'],
-    ['CRSR', 'NASDAQ'],
     ['NEM', 'NYSE'],
     ['MDB', 'NASDAQ'],
     ['FTNT', 'NASDAQ'],
@@ -186,7 +185,23 @@ SMA200_securities = [
 ]
 
 lowerBB_securities = [
-    ['MSOS', 'ARCA'], #99 days
+    ['APHA', 'NASDAQ'],#300; Exclude 200SMA
+    ['XPER', 'NASDAQ'],#298; Exclude 200SMA
+    ['ACB', 'NYSE'],#292; Exclude 200SMA
+    ['GRWG', 'NASDAQ'],#290; Exclude 200SMA
+    ['USO', 'ARCA'],#289; Exclude 200SMA
+    ['OIH', 'ARCA'],#285; Exclude 200SMA
+    ['SMH', 'NASDAQ'],#283; Exclude 200SMA
+    ['SRAC', 'NASDAQ'],#271; Exclude 200SMA
+    ['ONEM', 'NASDAQ'],#249; Exclude 200SMA
+    ['DADA', 'NASDAQ'],#161; Exclude 50SMA 200SMA
+    ['MGNI', 'NASDAQ'],#159; Exclude 50SMA 200SMA
+    ['LMND', 'NYSE'],#143; Exclude 50SMA 200SMA
+    ['LI', 'NASDAQ'],#124; 40 days, only include 9SMA and 20SMA
+    ['XPEV', 'NYSE'],#104; 40 days, only include 9SMA and 20SMA
+    ['MSOS', 'ARCA'],#100; 40 days, only include 9SMA and 20SMA
+    ['CRSR', 'NASDAQ'],#86; 40 days, only include 9SMA and 20SMA
+    ['CTEC', 'NASDAQ'],#60; 40 days, only include 9SMA and 20SMA
     ['ESTC', 'NYSE'],
     ['FNV', 'NYSE'],
     ['GDX', 'ARCA'],
@@ -213,16 +228,13 @@ lowerBB_securities = [
     ['LRCX', 'NASDAQ'],
     ['KLAC', 'NASDAQ'],
     ['TDOC', 'NYSE'],
-    ['XPEV', 'NYSE'],
     ['BIDU', 'NASDAQ'],
-    ['CTEC', 'NASDAQ'],
     ['UUP', 'ARCA'],
     ['SPCE', 'NYSE'],
     ['IRDM', 'NASDAQ'],
     ['DDD', 'NYSE'],
     ['IBB', 'NASDAQ'],
     ['ATVI', 'NASDAQ'],
-    ['DADA', 'NASDAQ'],
     ['VFF', 'NASDAQ'],
     ['CRON', 'NASDAQ'],
     ['RIO', 'NYSE'],
@@ -235,11 +247,8 @@ lowerBB_securities = [
     ['EEM', 'ARCA'],
     ['FVRR', 'NYSE'],
     ['VNET', 'NASDAQ'],
-    ['GRWG', 'NASDAQ'],
     ['FCEL', 'NASDAQ'],
-    ['XPER', 'NASDAQ'], #299 days
     ['ROKU', 'NASDAQ'],
-    ['USO', 'ARCA'],
     ['SPY', 'ARCA'],
     ['XRT', 'ARCA'],
     ['ZS', 'NASDAQ'],
@@ -255,20 +264,15 @@ lowerBB_securities = [
     ['PBW', 'ARCA'],
     ['ICLN', 'NASDAQ'],
     ['SPWR', 'NASDAQ'],
-    ['LMND', 'NYSE'],
     ['CYBR', 'NASDAQ'],
-    ['SKLZ', 'NYSE'],
     ['NXPI', 'NASDAQ'],
     ['ARKK', 'ARCA'],
-    ['MGNI', 'NASDAQ'],
     ['IWB', 'ARCA'],
     ['YOLO', 'ARCA'],
     ['THCX', 'ARCA'],
     ['MJ', 'ARCA'],
-    ['APHA', 'NASDAQ'],
     ['TLRY', 'NASDAQ'],
     ['MAXR', 'NYSE'],
-    ['SRAC', 'NASDAQ'],
     ['DE', 'NYSE'],
     ['SLV', 'ARCA'],
     ['AAPL', 'NASDAQ'],
@@ -290,11 +294,9 @@ lowerBB_securities = [
     ['HD', 'NYSE'],
     ['LOW', 'NYSE'],
     ['CRWD', 'NASDAQ'],
-    ['LI', 'NASDAQ'], #123 days
     ['NET', 'NYSE'],
     ['PINS', 'NYSE'],
     ['PTON', 'NASDAQ'],
-    ['OIH', 'ARCA'],
     ['XLE', 'ARCA'],
     ['TSLA', 'NASDAQ'],
     ['QCOM', 'NASDAQ'],
@@ -303,7 +305,6 @@ lowerBB_securities = [
     ['RUN', 'NASDAQ'],
     ['BLNK', 'NASDAQ'],
     ['SBUX', 'NASDAQ'],
-    ['SMH', 'NASDAQ'],
     ['SNAP', 'NYSE'],
     ['SQ', 'NYSE'],
     ['TGT', 'NYSE'],
@@ -324,13 +325,10 @@ lowerBB_securities = [
     ['CHDN', 'NASDAQ'],
     ['CGC', 'NASDAQ'],
     ['IIPR', 'NYSE'],
-    ['ONEM', 'NASDAQ'],
     ['FTCH', 'NYSE'],
-    ['ACB', 'NYSE'],
     ['ZI', 'NASDAQ'],
     ['SHOP', 'NYSE'],
     ['LAZR', 'NASDAQ'],
-    ['CRSR', 'NASDAQ'],
     ['NEM', 'NYSE'],
     ['MDB', 'NASDAQ'],
     ['FTNT', 'NASDAQ'],
@@ -364,7 +362,23 @@ lowerBB_securities = [
 ]
 
 upperBB_securities = [
-    ['MSOS', 'ARCA'], #99 days
+    ['APHA', 'NASDAQ'],#300; Exclude 200SMA
+    ['XPER', 'NASDAQ'],#298; Exclude 200SMA
+    ['ACB', 'NYSE'],#292; Exclude 200SMA
+    ['GRWG', 'NASDAQ'],#290; Exclude 200SMA
+    ['USO', 'ARCA'],#289; Exclude 200SMA
+    ['OIH', 'ARCA'],#285; Exclude 200SMA
+    ['SMH', 'NASDAQ'],#283; Exclude 200SMA
+    ['SRAC', 'NASDAQ'],#271; Exclude 200SMA
+    ['ONEM', 'NASDAQ'],#249; Exclude 200SMA
+    ['DADA', 'NASDAQ'],#161; Exclude 50SMA 200SMA
+    ['MGNI', 'NASDAQ'],#159; Exclude 50SMA 200SMA
+    ['LMND', 'NYSE'],#143; Exclude 50SMA 200SMA
+    ['LI', 'NASDAQ'],#124; 40 days, only include 9SMA and 20SMA
+    ['XPEV', 'NYSE'],#104; 40 days, only include 9SMA and 20SMA
+    ['MSOS', 'ARCA'],#100; 40 days, only include 9SMA and 20SMA
+    ['CRSR', 'NASDAQ'],#86; 40 days, only include 9SMA and 20SMA
+    ['CTEC', 'NASDAQ'],#60; 40 days, only include 9SMA and 20SMA
     ['ESTC', 'NYSE'],
     ['FNV', 'NYSE'],
     ['GDX', 'ARCA'],
@@ -391,16 +405,13 @@ upperBB_securities = [
     ['LRCX', 'NASDAQ'],
     ['KLAC', 'NASDAQ'],
     ['TDOC', 'NYSE'],
-    ['XPEV', 'NYSE'],
     ['BIDU', 'NASDAQ'],
-    ['CTEC', 'NASDAQ'],
     ['UUP', 'ARCA'],
     ['SPCE', 'NYSE'],
     ['IRDM', 'NASDAQ'],
     ['DDD', 'NYSE'],
     ['IBB', 'NASDAQ'],
     ['ATVI', 'NASDAQ'],
-    ['DADA', 'NASDAQ'],
     ['VFF', 'NASDAQ'],
     ['CRON', 'NASDAQ'],
     ['RIO', 'NYSE'],
@@ -413,11 +424,8 @@ upperBB_securities = [
     ['EEM', 'ARCA'],
     ['FVRR', 'NYSE'],
     ['VNET', 'NASDAQ'],
-    ['GRWG', 'NASDAQ'],
     ['FCEL', 'NASDAQ'],
-    ['XPER', 'NASDAQ'], #299 days
     ['ROKU', 'NASDAQ'],
-    ['USO', 'ARCA'],
     ['SPY', 'ARCA'],
     ['XRT', 'ARCA'],
     ['ZS', 'NASDAQ'],
@@ -433,20 +441,15 @@ upperBB_securities = [
     ['PBW', 'ARCA'],
     ['ICLN', 'NASDAQ'],
     ['SPWR', 'NASDAQ'],
-    ['LMND', 'NYSE'],
     ['CYBR', 'NASDAQ'],
-    ['SKLZ', 'NYSE'],
     ['NXPI', 'NASDAQ'],
     ['ARKK', 'ARCA'],
-    ['MGNI', 'NASDAQ'],
     ['IWB', 'ARCA'],
     ['YOLO', 'ARCA'],
     ['THCX', 'ARCA'],
     ['MJ', 'ARCA'],
-    ['APHA', 'NASDAQ'],
     ['TLRY', 'NASDAQ'],
     ['MAXR', 'NYSE'],
-    ['SRAC', 'NASDAQ'],
     ['DE', 'NYSE'],
     ['SLV', 'ARCA'],
     ['AAPL', 'NASDAQ'],
@@ -468,11 +471,9 @@ upperBB_securities = [
     ['HD', 'NYSE'],
     ['LOW', 'NYSE'],
     ['CRWD', 'NASDAQ'],
-    ['LI', 'NASDAQ'], #123 days
     ['NET', 'NYSE'],
     ['PINS', 'NYSE'],
     ['PTON', 'NASDAQ'],
-    ['OIH', 'ARCA'],
     ['XLE', 'ARCA'],
     ['TSLA', 'NASDAQ'],
     ['QCOM', 'NASDAQ'],
@@ -481,7 +482,6 @@ upperBB_securities = [
     ['RUN', 'NASDAQ'],
     ['BLNK', 'NASDAQ'],
     ['SBUX', 'NASDAQ'],
-    ['SMH', 'NASDAQ'],
     ['SNAP', 'NYSE'],
     ['SQ', 'NYSE'],
     ['TGT', 'NYSE'],
@@ -502,13 +502,10 @@ upperBB_securities = [
     ['CHDN', 'NASDAQ'],
     ['CGC', 'NASDAQ'],
     ['IIPR', 'NYSE'],
-    ['ONEM', 'NASDAQ'],
     ['FTCH', 'NYSE'],
-    ['ACB', 'NYSE'],
     ['ZI', 'NASDAQ'],
     ['SHOP', 'NYSE'],
     ['LAZR', 'NASDAQ'],
-    ['CRSR', 'NASDAQ'],
     ['NEM', 'NYSE'],
     ['MDB', 'NASDAQ'],
     ['FTNT', 'NASDAQ'],
@@ -539,4 +536,13 @@ upperBB_securities = [
     ['ZM', 'NASDAQ'],
     ['MRNA', 'NASDAQ'],
     ['AMD', 'NASDAQ']
+]
+
+buckets = [
+    [SMA9_securities, 'sma9'],
+    [SMA20_securities, 'sma20'],
+    [SMA50_securities, 'sma50'],
+    [SMA200_securities, 'sma200'],
+    [lowerBB_securities, 'lowerbb'],
+    [upperBB_securities, 'upperbb']
 ]
