@@ -1,10 +1,5 @@
 Next Steps:
-1) Find out why I don't have permission for FUBU market data
-2) Upload to new daily folder in Drive
-3) Upload directly to twitter or stocktwits
-4) Autonomous trading
-
-*** Scans were giving inconsistence results today and I suspect that the data coming
-in from IBKR is corrupted. The program was working perfectly yesterday... very annoying,
-I'll retest tomorrow and keep an eye on this... I'll inspect the data today vs
-tomorrow.
+1) Upload to new daily folder in Drive.
+2) Upload directly to twitter or stocktwits.
+3) Autonomous paper trading.
+4) Autonmous live trading.
