@@ -154,110 +154,112 @@ ib.connect('127.0.0.1', 4001, clientId=1)
 path = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}'''
 os.mkdir(path)
 
-for security in range(len(SMA9_securities)):
-    ib.sleep(1)
-    fetched_data = fetch_data(SMA9_securities[security][0], SMA9_securities[security][1], '365 D')
-    closing_prices = extract_closing(fetched_data)
-    sma9 = create_masubplot(9, closing_prices)
-    if closing_prices[len(closing_prices)-1] < (1 * sma9['data'][len(sma9['data'])-1]):
-        hits.append(SMA9_securities[security][0])
-        sma20 = create_masubplot(20, closing_prices)
-        sma50 = create_masubplot(50, closing_prices)
-        sma200 = create_masubplot(200, closing_prices)
-        lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-        pdata = reformat_IBdata(fetched_data, 120)
-        plot_total(SMA9_securities, '9SMA')
-    else:
-        print(f'''{SMA9_securities[security][0]} not in buying range.''')
-print(hits)
-
-for security in range(len(SMA20_securities)):
-    ib.sleep(1)
-    fetched_data = fetch_data(SMA20_securities[security][0], SMA20_securities[security][1], '365 D')
-    closing_prices = extract_closing(fetched_data)
-    sma20 = create_masubplot(20, closing_prices)
-    if closing_prices[len(closing_prices)-1] < (1 * sma20['data'][len(sma20['data'])-1]):
-        hits.append(SMA20_securities[security][0])
+while True:
+    for security in range(len(SMA9_securities)):
+        ib.sleep(1)
+        fetched_data = fetch_data(SMA9_securities[security][0], SMA9_securities[security][1], '365 D')
+        closing_prices = extract_closing(fetched_data)
         sma9 = create_masubplot(9, closing_prices)
-        sma50 = create_masubplot(50, closing_prices)
-        sma200 = create_masubplot(200, closing_prices)
-        lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-        pdata = reformat_IBdata(fetched_data, 120)
-        plot_total(SMA20_securities, '20SMA')
-    else:
-        print(f'''{SMA20_securities[security][0]} not in buying range.''')
-print(hits)
+        if closing_prices[len(closing_prices)-1] < (1 * sma9['data'][len(sma9['data'])-1]):
+            hits.append(SMA9_securities[security][0])
+            sma20 = create_masubplot(20, closing_prices)
+            sma50 = create_masubplot(50, closing_prices)
+            sma200 = create_masubplot(200, closing_prices)
+            lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+            upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+            pdata = reformat_IBdata(fetched_data, 120)
+            plot_total(SMA9_securities, '9SMA')
+        else:
+            print(f'''{SMA9_securities[security][0]} not in buying range.''')
+    print(hits)
 
-for security in range(len(SMA50_securities)):
-    ib.sleep(1)
-    fetched_data = fetch_data(SMA50_securities[security][0], SMA50_securities[security][1], '365 D')
-    closing_prices = extract_closing(fetched_data)
-    sma50 = create_masubplot(50, closing_prices)
-    if closing_prices[len(closing_prices)-1] < (1 * sma50['data'][len(sma50['data'])-1]):
-        hits.append(SMA50_securities[security][0])
-        sma9 = create_masubplot(9, closing_prices)
+    for security in range(len(SMA20_securities)):
+        ib.sleep(1)
+        fetched_data = fetch_data(SMA20_securities[security][0], SMA20_securities[security][1], '365 D')
+        closing_prices = extract_closing(fetched_data)
         sma20 = create_masubplot(20, closing_prices)
-        sma200 = create_masubplot(200, closing_prices)
-        lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-        pdata = reformat_IBdata(fetched_data, 120)
-        plot_total(SMA50_securities, '50SMA')
-    else:
-        print(f'''{SMA50_securities[security][0]} not in buying range.''')
-print(hits)
+        if closing_prices[len(closing_prices)-1] < (1 * sma20['data'][len(sma20['data'])-1]):
+            hits.append(SMA20_securities[security][0])
+            sma9 = create_masubplot(9, closing_prices)
+            sma50 = create_masubplot(50, closing_prices)
+            sma200 = create_masubplot(200, closing_prices)
+            lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+            upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+            pdata = reformat_IBdata(fetched_data, 120)
+            plot_total(SMA20_securities, '20SMA')
+        else:
+            print(f'''{SMA20_securities[security][0]} not in buying range.''')
+    print(hits)
 
-for security in range(len(SMA200_securities)):
-    ib.sleep(1)
-    fetched_data = fetch_data(SMA200_securities[security][0], SMA200_securities[security][1], '365 D')
-    closing_prices = extract_closing(fetched_data)
-    sma200 = create_masubplot(200, closing_prices)
-    if closing_prices[len(closing_prices)-1] < (1 * sma200['data'][len(sma200['data'])-1]):
-        hits.append(SMA200_securities[security][0])
-        sma9 = create_masubplot(9, closing_prices)
-        sma20 = create_masubplot(20, closing_prices)
+    for security in range(len(SMA50_securities)):
+        ib.sleep(1)
+        fetched_data = fetch_data(SMA50_securities[security][0], SMA50_securities[security][1], '365 D')
+        closing_prices = extract_closing(fetched_data)
         sma50 = create_masubplot(50, closing_prices)
-        lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-        pdata = reformat_IBdata(fetched_data, 120)
-        plot_total(SMA200_securities, '200SMA')
-    else:
-        print(f'''{SMA200_securities[security][0]} not in buying range.''')
-print(hits)
+        if closing_prices[len(closing_prices)-1] < (1 * sma50['data'][len(sma50['data'])-1]):
+            hits.append(SMA50_securities[security][0])
+            sma9 = create_masubplot(9, closing_prices)
+            sma20 = create_masubplot(20, closing_prices)
+            sma200 = create_masubplot(200, closing_prices)
+            lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+            upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+            pdata = reformat_IBdata(fetched_data, 120)
+            plot_total(SMA50_securities, '50SMA')
+        else:
+            print(f'''{SMA50_securities[security][0]} not in buying range.''')
+    print(hits)
 
-for security in range(len(lowerBB_securities)):
-    ib.sleep(1)
-    fetched_data = fetch_data(lowerBB_securities[security][0], lowerBB_securities[security][1], '365 D')
-    closing_prices = extract_closing(fetched_data)
-    lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-    if closing_prices[len(closing_prices)-1] < (1 * lowerbb['data'][len(lowerbb['data'])-1]):
-        hits.append(lowerBB_securities[security][0])
-        sma9 = create_masubplot(9, closing_prices)
-        sma20 = create_masubplot(20, closing_prices)
-        sma50 = create_masubplot(50, closing_prices)
+    for security in range(len(SMA200_securities)):
+        ib.sleep(1)
+        fetched_data = fetch_data(SMA200_securities[security][0], SMA200_securities[security][1], '365 D')
+        closing_prices = extract_closing(fetched_data)
         sma200 = create_masubplot(200, closing_prices)
-        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-        pdata = reformat_IBdata(fetched_data, 120)
-        plot_total(lowerBB_securities, 'LowerBB')
-    else:
-        print(f'''{lowerBB_securities[security][0]} not in buying range.''')
-print(hits)
+        if closing_prices[len(closing_prices)-1] < (1 * sma200['data'][len(sma200['data'])-1]):
+            hits.append(SMA200_securities[security][0])
+            sma9 = create_masubplot(9, closing_prices)
+            sma20 = create_masubplot(20, closing_prices)
+            sma50 = create_masubplot(50, closing_prices)
+            lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+            upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+            pdata = reformat_IBdata(fetched_data, 120)
+            plot_total(SMA200_securities, '200SMA')
+        else:
+            print(f'''{SMA200_securities[security][0]} not in buying range.''')
+    print(hits)
 
-for security in range(len(upperBB_securities)):
-    ib.sleep(1)
-    fetched_data = fetch_data(upperBB_securities[security][0], upperBB_securities[security][1], '365 D')
-    closing_prices = extract_closing(fetched_data)
-    upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-    if closing_prices[len(closing_prices)-1] > (1 * upperbb['data'][len(upperbb['data'])-1]):
-        hits.append(upperBB_securities[security][0])
-        sma9 = create_masubplot(9, closing_prices)
-        sma20 = create_masubplot(20, closing_prices)
-        sma50 = create_masubplot(50, closing_prices)
-        sma200 = create_masubplot(200, closing_prices)
+    for security in range(len(lowerBB_securities)):
+        ib.sleep(1)
+        fetched_data = fetch_data(lowerBB_securities[security][0], lowerBB_securities[security][1], '365 D')
+        closing_prices = extract_closing(fetched_data)
         lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-        pdata = reformat_IBdata(fetched_data, 120)
-        plot_total(upperBB_securities, 'UpperBB')
-    else:
-        print(f'''{upperBB_securities[security][0]} not in buying range.''')
-print(hits)
+        if closing_prices[len(closing_prices)-1] < (1 * lowerbb['data'][len(lowerbb['data'])-1]):
+            hits.append(lowerBB_securities[security][0])
+            sma9 = create_masubplot(9, closing_prices)
+            sma20 = create_masubplot(20, closing_prices)
+            sma50 = create_masubplot(50, closing_prices)
+            sma200 = create_masubplot(200, closing_prices)
+            upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+            pdata = reformat_IBdata(fetched_data, 120)
+            plot_total(lowerBB_securities, 'LowerBB')
+        else:
+            print(f'''{lowerBB_securities[security][0]} not in buying range.''')
+    print(hits)
+
+    for security in range(len(upperBB_securities)):
+        ib.sleep(1)
+        fetched_data = fetch_data(upperBB_securities[security][0], upperBB_securities[security][1], '365 D')
+        closing_prices = extract_closing(fetched_data)
+        upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
+        if closing_prices[len(closing_prices)-1] > (1 * upperbb['data'][len(upperbb['data'])-1]):
+            hits.append(upperBB_securities[security][0])
+            sma9 = create_masubplot(9, closing_prices)
+            sma20 = create_masubplot(20, closing_prices)
+            sma50 = create_masubplot(50, closing_prices)
+            sma200 = create_masubplot(200, closing_prices)
+            lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
+            pdata = reformat_IBdata(fetched_data, 120)
+            plot_total(upperBB_securities, 'UpperBB')
+        else:
+            print(f'''{upperBB_securities[security][0]} not in buying range.''')
+    print(hits)
+
