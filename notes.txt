@@ -1,4 +1,5 @@
 Next Steps:
+0) Comment out code to make it easier to read
 1) Upload to new daily folder in Drive.
 2) Upload directly to twitter or stocktwits.
 3) Autonomous paper trading.
