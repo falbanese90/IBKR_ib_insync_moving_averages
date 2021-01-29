@@ -4,15 +4,11 @@ SMA9_securities = [
     # ['GDX', 'ARCA'],
     # ['GOLD', 'NYSE'],
     ['TLT', 'NASDAQ'],
-    ['BABA', 'NYSE'],
-    ['DQ', 'NYSE'],
     ['FUTU', 'NASDAQ'],
     ['IQ', 'NASDAQ'],
     ['JMIA', 'NYSE'],
-    ['NTES', 'NASDAQ'],
     ['TAL', 'NYSE'],
     ['ZTO', 'NYSE'],
-    ['TDOC', 'NYSE'],
     ['UUP', 'ARCA'],
     ['SPCE', 'NYSE'],
     ['IRDM', 'NASDAQ'],
@@ -26,58 +22,62 @@ SMA20_securities = [
     ['DADA', 'NASDAQ'],#161; Exclude 50SMA 200SMA
     ['MGNI', 'NASDAQ'],#159; Exclude 50SMA 200SMA
     ['LMND', 'NYSE'],#143; Exclude 50SMA 200SMA
-    ['LI', 'NASDAQ'],#124; 40 days, only include 9SMA and 20SMA
-    ['XPEV', 'NYSE'],#104; 40 days, only include 9SMA and 20SMA
+    # ['LI', 'NASDAQ'],#124; 40 days, only include 9SMA and 20SMA
+    # ['XPEV', 'NYSE'],#104; 40 days, only include 9SMA and 20SMA
     ['MSOS', 'ARCA'],#100; 40 days, only include 9SMA and 20SMA
-    ['CRSR', 'NASDAQ'],#86; 40 days, only include 9SMA and 20SMA
+    # ['CRSR', 'NASDAQ'],#86; 40 days, only include 9SMA and 20SMA
     ['CTEC', 'NASDAQ'],#60; 40 days, only include 9SMA and 20SMA
     ['CRON', 'NASDAQ'],
     ['BGNE', 'NASDAQ'],
-    ['SOL', 'NYSE'],
-    ['BILI', 'NASDAQ'],
     ['EBAY', 'NASDAQ'],
-    ['CHWY', 'NYSE'],
-    ['EEM', 'ARCA'],
     ['ZLAB', 'NASDAQ'],
     ['FCEL', 'NASDAQ'],
-    ['ROKU', 'NASDAQ'],
+    ['TDOC', 'NYSE'],
     ['XRT', 'ARCA'],
     ['PLUG', 'NASDAQ'],
-    ['APPS', 'NASDAQ'],
-    ['PBW', 'ARCA'],
     ['SPWR', 'NASDAQ'],
     ['CYBR', 'NASDAQ'],
-    ['ARKK', 'ARCA'],
     ['YOLO', 'ARCA'],
     ['THCX', 'ARCA'],
     ['MJ', 'ARCA'],
     ['TLRY', 'NASDAQ'],
-    ['MAXR', 'NYSE'],
+
 ]
 
 # basket of securities with strong 50SMA support
 SMA50_securities = [
     ['APHA', 'NASDAQ'],#300; Exclude 200SMA
-    ['XPER', 'NASDAQ'],#298; Exclude 200SMA
+    ['XPER', 'NASDAQ'],#298; Exclude 200SMA  SHORT CANDIDATE
     ['ACB', 'NYSE'],#292; Exclude 200SMA
     ['GRWG', 'NASDAQ'],#290; Exclude 200SMA
     ['OIH', 'ARCA'],#285; Exclude 200SMA
     ['SMH', 'NASDAQ'],#283; Exclude 200SMA
     ['SRAC', 'NASDAQ'],#271; Exclude 200SMA
     ['SLV', 'ARCA'],
+    ['EEM', 'ARCA'],
+    ['SOL', 'NYSE'],
+    ['NTES', 'NASDAQ'],
     ['MARA', 'NASDAQ'],
+    ['PBW', 'ARCA'],
+    ['ROKU', 'NASDAQ'],
     ['NIU', 'NASDAQ'],
     ['VFF', 'NASDAQ'],
+    ['CHWY', 'NYSE'],
     ['AAPL', 'NASDAQ'],
     ['RIO', 'NYSE'],
     ['MCHI', 'NASDAQ'],
+    ['DQ', 'NYSE'],
+    ['BILI', 'NASDAQ'],
     ['KWEB', 'ARCA'],
     ['VNET', 'NASDAQ'],
+    ['MAXR', 'NYSE'],
     ['FXI', 'ARCA'],
     ['MELI', 'NASDAQ'],
     ['ICLN', 'NASDAQ'],
     ['ENPH', 'NASDAQ'],
+    ['ARKK', 'ARCA'],
     ['BBY', 'NYSE'],
+    ['APPS', 'NASDAQ'],
     ['LRCX', 'NASDAQ'],
     ['IBB', 'NASDAQ'],
     ['PENN', 'NASDAQ'],
@@ -94,21 +94,17 @@ SMA50_securities = [
     ['JPM', 'NYSE'],
     ['MLM', 'NYSE'],
     ['ESTC', 'NYSE'],
-    ['CCJ', 'NYSE'],
     ['ZS', 'NASDAQ'],
     ['NXE', 'AMEX'],
     ['FVRR', 'NYSE'],
     ['RIOT', 'NASDAQ'],
     ['IWM', 'ARCA'],
-    ['JO', 'ARCA'],
     ['FSLR', 'NASDAQ'],
     ['XLF', 'ARCA'],
     ['ETSY', 'NASDAQ'],
-    ['HD', 'NYSE'],
     ['LOW', 'NYSE'],
     ['CRWD', 'NASDAQ'],
     ['PTON', 'NASDAQ'],
-    ['XLE', 'ARCA'],
     ['TSLA', 'NASDAQ'],
     ['QCOM', 'NASDAQ'],
     ['QQQ', 'NYSE'],
@@ -149,14 +145,19 @@ SMA200_securities = [
     ['MSFT', 'NASDAQ'],
     ['NFLX', 'NASDAQ'],
     ['NVDA', 'NASDAQ'],
+    ['CCJ', 'NYSE'],
     ['PINS', 'NYSE'],
+    ['HD', 'NYSE'],
     ['INTU', 'NASDAQ'],
     ['DECK', 'NYSE'],
-    ['PG', 'NYSE'],
+    ['PG', 'NYSE'],    #SHORT CANDIDATE
     ['ANTM', 'NYSE'],
+    ['BABA', 'NYSE'],
     ['SQ', 'NYSE'],
     ['SBUX', 'NASDAQ'],
+    ['XLE', 'ARCA'],
     ['SHOP', 'NYSE'],
+    ['JO', 'ARCA'],
     ['DDOG', 'NASDAQ'],
     ['NXPI', 'NASDAQ'],
     ['CHDN', 'NASDAQ'],
