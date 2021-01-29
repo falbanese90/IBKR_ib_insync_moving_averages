@@ -1,3 +1,4 @@
+# basket of securities with strong 9SMA support
 SMA9_securities = [
     # ['FNV', 'NYSE'],
     # ['GDX', 'ARCA'],
@@ -8,8 +9,6 @@ SMA9_securities = [
     ['FUTU', 'NASDAQ'],
     ['IQ', 'NASDAQ'],
     ['JMIA', 'NYSE'],
-    ['KWEB', 'ARCA'],
-    ['NIU', 'NASDAQ'],
     ['NTES', 'NASDAQ'],
     ['TAL', 'NYSE'],
     ['ZTO', 'NYSE'],
@@ -20,6 +19,7 @@ SMA9_securities = [
     ['DDD', 'NYSE'],
 ]
 
+# basket of securities with strong 20SMA support
 SMA20_securities = [
     ['USO', 'ARCA'],#289; Exclude 200SMA
     ['ONEM', 'NASDAQ'],#249; Exclude 200SMA
@@ -55,6 +55,7 @@ SMA20_securities = [
     ['MAXR', 'NYSE'],
 ]
 
+# basket of securities with strong 50SMA support
 SMA50_securities = [
     ['APHA', 'NASDAQ'],#300; Exclude 200SMA
     ['XPER', 'NASDAQ'],#298; Exclude 200SMA
@@ -65,10 +66,12 @@ SMA50_securities = [
     ['SRAC', 'NASDAQ'],#271; Exclude 200SMA
     ['SLV', 'ARCA'],
     ['MARA', 'NASDAQ'],
+    ['NIU', 'NASDAQ'],
     ['VFF', 'NASDAQ'],
     ['AAPL', 'NASDAQ'],
     ['RIO', 'NYSE'],
     ['MCHI', 'NASDAQ'],
+    ['KWEB', 'ARCA'],
     ['VNET', 'NASDAQ'],
     ['FXI', 'ARCA'],
     ['MELI', 'NASDAQ'],
@@ -137,6 +140,7 @@ SMA50_securities = [
     ['XLK', 'ARCA']
 ]
 
+# basket of securities with strong 200SMA support
 SMA200_securities = [
     ['GLD', 'ARCA'],
     ['ADBE', 'NASDAQ'],
@@ -184,6 +188,7 @@ SMA200_securities = [
     ['AMD', 'NASDAQ']
 ]
 
+# all securities, bollinger bands currently set to 2.5 standard deviations
 lowerBB_securities = [
     ['APHA', 'NASDAQ'],#300; Exclude 200SMA
     ['XPER', 'NASDAQ'],#298; Exclude 200SMA
@@ -361,6 +366,7 @@ lowerBB_securities = [
     ['AMD', 'NASDAQ']
 ]
 
+# all securities, bollinger bands currently set to 2.5 standard deviations
 upperBB_securities = [
     ['APHA', 'NASDAQ'],#300; Exclude 200SMA
     ['XPER', 'NASDAQ'],#298; Exclude 200SMA
@@ -538,6 +544,7 @@ upperBB_securities = [
     ['AMD', 'NASDAQ']
 ]
 
+# may be using this list to further refactor code sometime in the future
 buckets = [
     [SMA9_securities, 'sma9'],
     [SMA20_securities, 'sma20'],
