@@ -36,15 +36,13 @@ def create_new_daily_folder(GoogleDriveObject):
     folder.Upload()
     return folder['id']
 
-################################################################################
-#create chart file on Google Drive
-def create_chart_file(GoogleDriveObject, parentID):
-    file_metadata = {'title': f'''{ticker}_{defining_ma}_{today_date}.pdf''',
-                     'parents': [{'id': parentID,
+def chart_file_upload(GoogleDriveObject, parentFolderKey, filePath, fileTitle):
+    file_metadata = {'title': fileTitle,
+                     'parents': [{'id': parentFolderKey,
                                   'kind': 'drive#childList'}]}
     file = GoogleDriveObject.CreateFile(file_metadata)
+    file.SetContentFile(filePath)
     file.Upload()
-################################################################################
 
 # get daily historical bar data from IBKR api
 def fetch_data(ticker, prime_exch, data_barcount):
@@ -99,14 +97,14 @@ def create_lowerbb_subplot(closing_prices, period, std):
     return bb
 
 # reformat dict of IBKR values for mplfinance charting
-def reformat_IBdata(fetched_data, numofdays):
+def reformat_IBdata(fetched_data):
     reformatted_data = {}
     reformatted_data['Date'] = []
     reformatted_data['Open'] = []
     reformatted_data['High'] = []
     reformatted_data['Low'] = []
     reformatted_data['Close'] = []
-    for dict in range(len(fetched_data)-numofdays,len(fetched_data)):
+    for dict in range(len(fetched_data)):
         reformatted_data['Date'].append(datetime.strptime(str(fetched_data[dict]['BarData']['date']), '%Y-%m-%d'))
         reformatted_data['Open'].append(fetched_data[dict]['BarData']['open'])
         reformatted_data['High'].append(fetched_data[dict]['BarData']['high'])
@@ -116,69 +114,84 @@ def reformat_IBdata(fetched_data, numofdays):
     pdata = pd.DataFrame.from_dict(reformatted_data)
     pdata.set_index('Date', inplace=True)
     return pdata
-    print(pdata)
 
 # create chart of candlesticks, 9SMA, 20SMA, 50SMA, 200SMA, Bollinger Bands for stocks w/ full data
 def plot_d(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, numofdays, ticker, defining_ma):
-    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
-    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
-    sma50dict = mpf.make_addplot(sma50['data'][-numofdays:], color='#3a7821')
-    sma200dict = mpf.make_addplot(sma200['data'][-numofdays:], color='#483e8b')
-    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c')
-    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c')
+    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff', width=1)
+    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06', width=1)
+    sma50dict = mpf.make_addplot(sma50['data'][-numofdays:], color='#3a7821', width=1)
+    sma200dict = mpf.make_addplot(sma200['data'][-numofdays:], color='#483e8b', width=1)
+    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c', width=1)
+    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c', width=1)
     mpf.plot(pdata[-numofdays:], type='candle', style='charles',
                 addplot=[sma9dict, sma20dict, sma50dict, sma200dict, lowerbbdict, upperbbdict],
-                figscale=.9,
+                # figscale=.9,
                 tight_layout=False,
+                ylabel='',
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
+    chartFilePath = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf'''
+    chartFileTitle = f'''{ticker}_{defining_ma}_{today_date}.pdf'''
+    chart_file_upload(drive, daily_folder_id, chartFilePath, chartFileTitle)
 
 # create chart of candlesticks, 9SMA, 20SMA, 50SMA, Bollinger Bands for stocks w/ partial data
 def plot_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, numofdays, ticker, defining_ma):
-    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
-    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
-    sma50dict = mpf.make_addplot(sma50['data'][-numofdays:], color='#3a7821')
-    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c')
-    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c')
+    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff', width=1)
+    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06', width=1)
+    sma50dict = mpf.make_addplot(sma50['data'][-numofdays:], color='#3a7821', width=1)
+    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c', width=1)
+    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c', width=1)
     mpf.plot(pdata[-numofdays:], type='candle', style='charles',
                 addplot=[sma9dict, sma20dict, sma50dict, lowerbbdict, upperbbdict],
-                figscale=.9,
+                # figscale=.9,
                 tight_layout=False,
+                ylabel='',
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
+    chartFilePath = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf'''
+    chartFileTitle = f'''{ticker}_{defining_ma}_{today_date}.pdf'''
+    chart_file_upload(drive, daily_folder_id, chartFilePath, chartFileTitle)
 
 # create chart of candlesticks, 9SMA, 20SMA, Bollinger Bands for stocks w/ less days of data
 def plot_j2(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defining_ma):
-    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
-    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
-    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c')
-    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c')
+    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff', width=1)
+    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06', width=1)
+    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c', width=1)
+    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c', width=1)
     mpf.plot(pdata[-numofdays:], type='candle', style='charles',
                 addplot=[sma9dict, sma20dict, lowerbbdict, upperbbdict],
-                figscale=.9,
+                # figscale=.9,
                 tight_layout=False,
+                ylabel='',
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
+    chartFilePath = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf'''
+    chartFileTitle = f'''{ticker}_{defining_ma}_{today_date}.pdf'''
+    chart_file_upload(drive, daily_folder_id, chartFilePath, chartFileTitle)
 
 # create abbreviated chart of candlesticks, 9SMA, 20SMA, Bollinger Bands for stocks w/ minimal days of data
 def plot_j3(pdata, sma9, sma20, lowerbb, upperbb, numofdays, ticker, defining_ma):
-    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff')
-    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06')
-    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c')
-    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c')
+    sma9dict = mpf.make_addplot(sma9['data'][-numofdays:], color='#c87cff', width=1)
+    sma20dict = mpf.make_addplot(sma20['data'][-numofdays:], color='#f28c06', width=1)
+    lowerbbdict = mpf.make_addplot(lowerbb['data'][-numofdays:], color='#b90c0c', width=1)
+    upperbbdict = mpf.make_addplot(upperbb['data'][-numofdays:], color='#b90c0c', width=1)
     mpf.plot(pdata[-numofdays:], type='candle', style='charles',
                 addplot=[sma9dict, sma20dict, lowerbbdict, upperbbdict],
-                figscale=.9,
+                # figscale=.9,
                 tight_layout=False,
+                ylabel='',
                 savefig=f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf''')
+    chartFilePath = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}/{ticker}_{defining_ma}_{today_date}.pdf'''
+    chartFileTitle = f'''{ticker}_{defining_ma}_{today_date}.pdf'''
+    chart_file_upload(drive, daily_folder_id, chartFilePath, chartFileTitle)
 
 # print best chart possible for available days of data... if ValueError still persists, print len of lists for debugging
-def plot_total(bucket, bucket_nickname):
+def plot_total(bucket, bucket_nickname, days):
     try:
-        plot_d(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, 120, bucket[security][0], bucket_nickname)
+        plot_d(pdata, sma9, sma20, sma50, sma200, lowerbb, upperbb, days, bucket[security][0], bucket_nickname)
     except ValueError:
         try:
-            plot_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, 120, bucket[security][0], bucket_nickname)
+            plot_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, days, bucket[security][0], bucket_nickname)
         except ValueError:
             try:
-                plot_j2(pdata, sma9, sma20, lowerbb, upperbb, 120, bucket[security][0], bucket_nickname)
+                plot_j2(pdata, sma9, sma20, lowerbb, upperbb, days, bucket[security][0], bucket_nickname)
             except ValueError:
                 try:
                     plot_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, bucket[security][0], bucket_nickname)
@@ -191,7 +204,24 @@ def plot_total(bucket, bucket_nickname):
                     print(f'''200SMA: {len(sma200['data'][-40:])}''')
                     print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
                     print(f'''upperBB: {len(upperbb['data'][-40:])}''')
-
+    except IndexError:
+        try:
+            plot_j1(pdata, sma9, sma20, sma50, lowerbb, upperbb, days, bucket[security][0], bucket_nickname)
+        except IndexError:
+            try:
+                plot_j2(pdata, sma9, sma20, lowerbb, upperbb, days, bucket[security][0], bucket_nickname)
+            except IndexError:
+                try:
+                    plot_j3(pdata, sma9, sma20, lowerbb, upperbb, 40, bucket[security][0], bucket_nickname)
+                except IndexError:
+                    print(f'''pdata: {len(pdata[-40:])}''')
+                    print(f'''Closings: {len(closing_prices[-40:])}''')
+                    print(f'''9SMA: {len(sma9['data'][-40:])}''')
+                    print(f'''20SMA: {len(sma20['data'][-40:])}''')
+                    print(f'''50SMA: {len(sma50['data'][-40:])}''')
+                    print(f'''200SMA: {len(sma200['data'][-40:])}''')
+                    print(f'''lowerBB: {len(lowerbb['data'][-40:])}''')
+                    print(f'''upperBB: {len(upperbb['data'][-40:])}''')
 # list to be appended with stocks that meet conditions to prevent chart duplicates
 hits = []
 
@@ -204,10 +234,9 @@ ib.connect('127.0.0.1', 4001, clientId=1)
 path = f'''/Users/mike/Desktop/ibkr_ma_chart/9-200SMA_{today_date}'''
 os.mkdir(path)
 
-# drive = google_drive_authentication()
-#
-# daily_folder_id = create_new_daily_folder(drive)
-# print(daily_folder_id)
+drive = google_drive_authentication()
+daily_folder_id = create_new_daily_folder(drive)
+
 
 # cycle through all baskets indefinitely, print chart when conditions are met
 while True:
@@ -223,8 +252,8 @@ while True:
             sma200 = create_masubplot(200, closing_prices)
             lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
             upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-            pdata = reformat_IBdata(fetched_data, 120)
-            plot_total(SMA9_securities, '9SMA')
+            pdata = reformat_IBdata(fetched_data)
+            plot_total(SMA9_securities, '9SMA', 60)
         else:
             print(f'''{SMA9_securities[security][0]} not in buying range.''')
     print(hits)
@@ -241,8 +270,8 @@ while True:
             sma200 = create_masubplot(200, closing_prices)
             lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
             upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-            pdata = reformat_IBdata(fetched_data, 120)
-            plot_total(SMA20_securities, '20SMA')
+            pdata = reformat_IBdata(fetched_data)
+            plot_total(SMA20_securities, '20SMA', 75)
         else:
             print(f'''{SMA20_securities[security][0]} not in buying range.''')
     print(hits)
@@ -259,8 +288,8 @@ while True:
             sma200 = create_masubplot(200, closing_prices)
             lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
             upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-            pdata = reformat_IBdata(fetched_data, 120)
-            plot_total(SMA50_securities, '50SMA')
+            pdata = reformat_IBdata(fetched_data)
+            plot_total(SMA50_securities, '50SMA', 120)
         else:
             print(f'''{SMA50_securities[security][0]} not in buying range.''')
     print(hits)
@@ -277,8 +306,8 @@ while True:
             sma50 = create_masubplot(50, closing_prices)
             lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
             upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-            pdata = reformat_IBdata(fetched_data, 120)
-            plot_total(SMA200_securities, '200SMA')
+            pdata = reformat_IBdata(fetched_data)
+            plot_total(SMA200_securities, '200SMA', 120)
         else:
             print(f'''{SMA200_securities[security][0]} not in buying range.''')
     print(hits)
@@ -295,8 +324,8 @@ while True:
             sma50 = create_masubplot(50, closing_prices)
             sma200 = create_masubplot(200, closing_prices)
             upperbb = create_upperbb_subplot(closing_prices, 20, 2.5)
-            pdata = reformat_IBdata(fetched_data, 120)
-            plot_total(lowerBB_securities, 'LowerBB')
+            pdata = reformat_IBdata(fetched_data)
+            plot_total(lowerBB_securities, 'LowerBB', 120)
         else:
             print(f'''{lowerBB_securities[security][0]} not in buying range.''')
     print(hits)
@@ -313,8 +342,8 @@ while True:
             sma50 = create_masubplot(50, closing_prices)
             sma200 = create_masubplot(200, closing_prices)
             lowerbb = create_lowerbb_subplot(closing_prices, 20, 2.5)
-            pdata = reformat_IBdata(fetched_data, 120)
-            plot_total(upperBB_securities, 'UpperBB')
+            pdata = reformat_IBdata(fetched_data)
+            plot_total(upperBB_securities, 'UpperBB', 120)
         else:
             print(f'''{upperBB_securities[security][0]} not in buying range.''')
     print(hits)
