@@ -27,7 +27,26 @@ def create_new_daily_folder(GoogleDriveObject):
     folder.Upload()
     return folder['id']
 
-drive = google_drive_authentication()
+#upload file from computer to GoogleAPI
+def chart_file_upload(GoogleDriveObject, parentFolderKey, filePath):
+    file_metadata = {'title': f'''{today_date} CHART FILE.pdf''',
+                     'parents': [{'id': parentFolderKey,
+                                  'kind': 'drive#childList'}]}
+    file = GoogleDriveObject.CreateFile(file_metadata)
+    file.SetContentFile(filePath)
+    file.Upload()
 
+#get current working directory
+path = os.getcwd()
+print(path)
+
+# get folder name and id
+folder_list = drive.ListFile({'q': 'trashed=false'}).GetList()
+for folder in folder_list:
+    print ('folder title: %s, id: %s' % (folder['title'], folder['id']))
+
+
+#creates google drive object, new folder dated for today, uploads file from cpu
+drive = google_drive_authentication()
 daily_folder_id = create_new_daily_folder(drive)
-print(daily_folder_id)
+chart_file_upload(drive, daily_folder_id)
