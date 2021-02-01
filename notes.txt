@@ -11,7 +11,7 @@ and assign different sector weightings based on macro thesis
 3) Set market condition restrictions? Only enter trades during certain market
 conditions?
 
-*** Account / Portfolio Dictionaries before anything else ***
+*** Setup functions for counting items in list / dictionary ***
 
 Start with Diversification.
 
