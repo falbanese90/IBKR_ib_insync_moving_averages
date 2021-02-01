@@ -1,5 +1,21 @@
 Next Steps:
-0) Add SetContentString text for easier twitter posting 
+
+Ok, so I have a scanner I can run all day that alerts me of the moving average
+setups I like to trade. The next step is programming rules based on account
+and position values / attributes... next rules to factor...
+BROADLY:
+1) Diversification - break down curated momentum stocks into separate categories
+and assign different sector weightings based on macro thesis
+2) Set risk limits - never risk more than 2 - 3% per trade?
+                   -stops? Entire option premium = 2 - 3% acct?
+3) Set market condition restrictions? Only enter trades during certain market
+conditions?
+
+*** Account / Portfolio Dictionaries before anything else ***
+
+Start with Diversification.
+
+0) Add SetContentString text for easier twitter posting
 1) Upload directly to twitter or stocktwits.
 2) Autonomous paper trading.
 3) Autonmous live trading.
