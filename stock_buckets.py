@@ -2,7 +2,7 @@
 SMA9_securities = [
     # ['FNV', 'NYSE'],
     # ['GDX', 'ARCA'],
-    # ['GOLD', 'NYSE'],
+    # ['gold', 'NYSE'],
     ['TLT', 'NASDAQ'],
     ['FUTU', 'NASDAQ'],
     ['IQ', 'NASDAQ'],
@@ -21,7 +21,6 @@ SMA20_securities = [
     ['ONEM', 'NASDAQ'],#249; Exclude 200SMA
     ['DADA', 'NASDAQ'],#161; Exclude 50SMA 200SMA
     ['MGNI', 'NASDAQ'],#159; Exclude 50SMA 200SMA
-    ['LMND', 'NYSE'],#143; Exclude 50SMA 200SMA
     # ['LI', 'NASDAQ'],#124; 40 days, only include 9SMA and 20SMA
     # ['XPEV', 'NYSE'],#104; 40 days, only include 9SMA and 20SMA
     ['MSOS', 'ARCA'],#100; 40 days, only include 9SMA and 20SMA
@@ -53,6 +52,7 @@ SMA50_securities = [
     ['OIH', 'ARCA'],#285; Exclude 200SMA
     ['SMH', 'NASDAQ'],#283; Exclude 200SMA
     ['SRAC', 'NASDAQ'],#271; Exclude 200SMA
+    ['LMND', 'NYSE'],#143; Exclude 50SMA 200SMA
     ['SLV', 'ARCA'],
     ['EEM', 'ARCA'],
     ['SOL', 'NYSE'],
@@ -211,7 +211,7 @@ lowerBB_securities = [
     ['ESTC', 'NYSE'],
     ['FNV', 'NYSE'],
     ['GDX', 'ARCA'],
-    ['GOLD', 'NYSE'],
+    ['gold', 'NYSE'],
     ['IWM', 'ARCA'],
     ['TLT', 'NASDAQ'],
     ['BABA', 'NYSE'],
@@ -389,7 +389,7 @@ upperBB_securities = [
     ['ESTC', 'NYSE'],
     ['FNV', 'NYSE'],
     ['GDX', 'ARCA'],
-    ['GOLD', 'NYSE'],
+    ['gold', 'NYSE'],
     ['IWM', 'ARCA'],
     ['TLT', 'NASDAQ'],
     ['BABA', 'NYSE'],
@@ -557,248 +557,178 @@ buckets = [
 
 # full list of securities with Industry, Category, Subcategory
 industry_category_subcategory = [
-    ["USO", "ARCA", "Industry", "Energy", "Oil"],
-    ["OIH", "ARCA", "Industry", "Energy", "Oil"],
-    ["SMH", "NASDAQ", "Industry", "Technology", "Semiconductors"],
-    ["MSOS", "ARCA", "Industry", "Pharmaceuticals", "Medical-Drugs"],
-    ["CTEC", "NASDAQ", "Industry", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["GDX", "ARCA", "Industry", "Mining", "Gold Mining"],
-    ["IWM", "ARCA", "Industry", "Index", "Stock"],
-    ["TLT", "NASDAQ", "Industry", "Treasuries", "Treasuries"],
-    ["FXI", "ARCA", "Industry", "Index", "China"],
-    ["KWEB", "ARCA", "Industry", "Index", "China"],
-    ["MCHI", "NASDAQ", "Industry", "Index", "China"],
-    ["UUP", "ARCA", "Industry", "Currency", "USD"],
-    ["IBB", "NASDAQ", "Industry", "Consumer, Non-cyclical", "Biotechnology"],
-    ["DIA", "ARCA", "Industry", "Index", "Stock"],
-    ["EEM", "ARCA", "Industry", "Index", "China"],
-    ["SPY", "ARCA", "Industry", "Index", "Stock"],
-    ["XRT", "ARCA", "Industry", "Consumer, Cyclical", "Retail"],
-    ["TAN", "ARCA", "Industry", "Energy", "Energy-Alternate Sources"],
-    ["PBW", "ARCA", "Industry", "Energy", "Energy-Alternate Sources"],
-    ["ICLN", "NASDAQ", "Industry", "Energy", "Energy-Alternate Sources"],
-    ["ARKK", "ARCA", "Industry", "Technology", "Software"],
-    ["IWB", "ARCA", "Industry", "Index", "Stock"],
-    ["YOLO", "ARCA", "Industry", "Pharmaceuticals", "Medical-Drugs"],
-    ["THCX", "ARCA", "Industry", "Pharmaceuticals", "Medical-Drugs"],
-    ["MJ", "ARCA", "Industry", "Pharmaceuticals", "Medical-Drugs"],
-    ["SLV", "ARCA", "Industry", "Precious Metals", "Silver"],
-    ["JO", "ARCA", "Industry", "Commodities", "Coffee"],
-    ["XLF", "ARCA", "Industry", "Financial", "Banks"],
-    ["XLE", "ARCA", "Industry", "Energy", "Oil"],
-    ["QQQ", "NYSE", "Industry", "Index", "Stock"],
-    ["XHB", "ARCA", "Industry", "Consumer, Cyclical", "Home Builders"],
-    ["IGV", "BATS", "Industry", "Technology", "Software"],
-    ["XLK", "ARCA", "Industry", "Technology", "Index"],
-    ["GLD", "ARCA", "Industry", "Precious Metals", "Gold"],
-    ["FNV", "NYSE", "Basic Materials", "Mining", "Gold Mining"],
-    ["GOLD", "NYSE", "Basic Materials", "Mining", "Gold Mining"],
-    ["DQ", "NYSE", "Basic Materials", "Chemicals", "China"],
-    ["RIO", "NYSE", "Basic Materials", "Mining", "Metal-Diversified"],
-    ["BHP", "NYSE", "Basic Materials", "Mining", "Diversified Minerals"],
-    ["UUUU", "AMEX", "Basic Materials", "Mining", "Non-Ferrous Metals"],
-    ["CCJ", "NYSE", "Basic Materials", "Mining", "Non-Ferrous Metals"],
-    ["NXE", "AMEX", "Basic Materials", "Mining", "Non-Ferrous Metals"],
-    ["NEM", "NYSE", "Basic Materials", "Mining", "Gold Mining"],
-    ["DADA", "NASDAQ", "Communications", "Internet", "Internet Content-Info/Ne"],
-    ["MGNI", "NASDAQ", "Communications", "Internet", "E-Marketing/Info"],
-    ["BABA", "NYSE", "Communications", "Internet", "China"],
-    ["GDS", "NASDAQ", "Communications", "Telecommunications", "China"],
-    ["IQ", "NASDAQ", "Communications", "Internet", "China"],
-    ["JMIA", "NYSE", "Communications", "Internet", "China"],
-    ["BIDU", "NASDAQ", "Communications", "Internet", "Web Portals/ISP"],
-    ["IRDM", "NASDAQ", "Communications", "Telecommunications", "Satellite Telecom"],
-    ["EBAY", "NASDAQ", "Communications", "Internet", "E-Commerce/Products"],
-    ["CHWY", "NYSE", "Communications", "Internet", "E-Commerce/Products"],
-    ["FVRR", "NYSE", "Communications", "Internet", "E-Commerce/Services"],
-    ["VNET", "NASDAQ", "Communications", "Internet", "China"],
-    ["ROKU", "NASDAQ", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["VIPS", "NYSE", "Communications", "Internet", "China"],
-    ["MELI", "NASDAQ", "Communications", "Internet", "E-Commerce/Services"],
-    ["MAXR", "NYSE", "Communications", "Telecommunications", "Wireless Equipment"],
-    ["ETSY", "NASDAQ", "Communications", "Internet", "E-Commerce/Products"],
-    ["PINS", "NYSE", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["SNAP", "NYSE", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["Z", "NASDAQ", "Communications", "Internet", "E-Commerce/Services"],
-    ["JD", "NASDAQ", "Communications", "Internet", "China"],
-    ["PDD", "NASDAQ", "Communications", "Internet", "China"],
-    ["GOOGL", "NASDAQ", "Communications", "Internet", "Web Portals/ISP"],
-    ["OKTA", "NASDAQ", "Communications", "Internet", "Internet Applic Sftwr"],
-    ["FTCH", "NYSE", "Communications", "Internet", "E-Commerce/Products"],
-    ["SHOP", "NYSE", "Communications", "Internet", "Internet Applic Sftwr"],
-    ["NFLX", "NASDAQ", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["TTD", "NASDAQ", "Communications", "Advertising", "Advertising Services"],
-    ["TWTR", "NYSE", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["NFLX", "NASDAQ", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["FB", "NASDAQ", "Communications", "Internet", "Internet Content-Entmnt"],
-    ["AMZN", "NASDAQ", "Communications", "Internet", "E-Commerce/Products"],
-    ["GRWG", "NASDAQ", "Consumer, Cyclical", "Retail", "Retail-Gardening Prod"],
-    ["LI", "NASDAQ", "Consumer, Cyclical", "Auto Manufacturers", "Auto-Cars/Light Trucks"],
-    ["XPEV", "NYSE", "Consumer, Cyclical", "Auto Manufacturers", "Auto-Cars/Light Trucks"],
-    ["NIU", "NASDAQ", "Consumer, Cyclical", "Leisure Time", "China"],
-    ["SPCE", "NYSE", "Consumer, Cyclical", "Leisure Time", "Travel Services"],
-    ["PENN", "NASDAQ", "Consumer, Cyclical", "Entertainment", "Racetracks"],
-    ["BBY", "NYSE", "Consumer, Cyclical", "Retail", "Retail-Consumer Electron"],
-    ["DECK", "NYSE", "Consumer, Cyclical", "Apparel", "Apparel Manufacturers"],
-    ["GPS", "NYSE", "Consumer, Cyclical", "Retail", "Retail-Apparel/Shoe"],
-    ["HD", "NYSE", "Consumer, Cyclical", "Retail", "Retail-Building Products"],
-    ["LOW", "NYSE", "Consumer, Cyclical", "Retail", "Retail-Building Products"],
-    ["PTON", "NASDAQ", "Consumer, Cyclical", "Leisure Time", "Athletic Equipment"],
-    ["TSLA", "NASDAQ", "Consumer, Cyclical", "Auto Manufacturers", "Auto-Cars/Light Trucks"],
-    ["SBUX", "NASDAQ", "Consumer, Cyclical", "Retail", "Retail-Restaurants"],
-    ["TGT", "NYSE", "Consumer, Cyclical", "Retail", "Retail-Discount"],
-    ["NIO", "NYSE", "Consumer, Cyclical", "Auto Manufacturers", "China"],
-    ["CHDN", "NASDAQ", "Consumer, Cyclical", "Entertainment", "Racetracks"],
-    ["LAZR", "NASDAQ", "Consumer, Cyclical", "Auto Parts and Equipment", "Auto/Trk Prts and Equip-Orig"],
-    ["BZH", "NYSE", "Consumer, Cyclical", "Home Builders", "Bldg-Residential/Commer"],
-    ["COST", "ARCA", "Consumer, Cyclical", "Retail", "Retail-Discount"],
-    ["WMT", "NYSE", "Consumer, Cyclical", "Retail", "Retail-Discount"],
-    ["HTHT", "NASDAQ", "Consumer, Cyclical", "Lodging", "China"],
-    ["APHA", "NASDAQ", "Consumer, Non-cyclical", "Pharmaceuticals", "Medical-Drugs"],
-    ["ACB", "NYSE", "Consumer, Non-cyclical", "Pharmaceuticals", "Medical-Drugs"],
-    ["BGNE", "NASDAQ", "Consumer, Non-cyclical", "Biotechnology", "China"],
-    ["TAL", "NYSE", "Consumer, Non-cyclical", "Commercial Services", "China"],
-    ["ZLAB", "NASDAQ", "Consumer, Non-cyclical", "Biotechnology", "China"],
-    ["TDOC", "NYSE", "Consumer, Non-cyclical", "Healthcare-Services", "Medical Labs and Testing Srv"],
-    ["VFF", "NASDAQ", "Consumer, Non-cyclical", "Agriculture", "Agricultural Operations"],
-    ["CRON", "NASDAQ", "Consumer, Non-cyclical", "Household Products/Wares", "Consumer Products-Misc"],
-    ["PYPL", "NASDAQ", "Consumer, Non-cyclical", "Commercial Services", "Commercial Serv-Finance"],
-    ["TLRY", "NASDAQ", "Consumer, Non-cyclical", "Pharmaceuticals", "Medical-Drugs"],
-    ["RIOT", "NASDAQ", "Consumer, Non-cyclical", "Commercial Services", "Commercial Serv-Finance"],
-    ["SQ", "NYSE", "Consumer, Non-cyclical", "Commercial Services", "Commercial Serv-Finance"],
-    ["NVAX", "NASDAQ", "Consumer, Non-cyclical", "Biotechnology", "Medical-Biomedical/Gene"],
-    ["CGC", "NASDAQ", "Consumer, Non-cyclical", "Pharmaceuticals", "Medical-Drugs"],
-    ["PG", "NYSE", "Consumer, Non-cyclical", "Cosmetics/Personal Care", "Cosmetics and Toiletries"],
-    ["ANTM", "NYSE", "Consumer, Non-cyclical", "Healthcare-Services", "Medical-HMO"],
-    ["EDU", "NYSE", "Consumer, Non-cyclical", "Commercial Services", "China"],
-    ["MRNA", "NASDAQ", "Consumer, Non-cyclical", "Biotechnology", "Medical-Biomedical/Gene"],
-    ["SRAC", "NASDAQ", "Diversified", "Holding Companies-Divers", "Specified Purpose Acquis"],
-    ["MARA", "NASDAQ", "Diversified", "Holding Companies-Divers", "Diversified Operations"],
-    ["SOL", "NYSE", "Energy", "Energy-Alternate Sources", "China"],
-    ["FCEL", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["PLUG", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["ENPH", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["SPWR", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["CSIQ", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["FSLR", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["RUN", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["SEDG", "NASDAQ", "Energy", "Energy-Alternate Sources", "Energy-Alternate Sources"],
-    ["JKS", "NYSE", "Energy", "Energy-Alternate Sources", "China"],
-    ["LMND", "NYSE", "Financial", "Insurance", "Property/Casualty Ins"],
-    ["FUTU", "NASDAQ", "Financial", "Diversified Finan Serv", "China"],
-    ["JPM", "NYSE", "Financial", "Banks", "Diversified Banking Inst"],
-    ["IIPR", "NYSE", "Financial", "REITS", "REITS-Warehouse/Industr"],
-    ["ZTO", "NYSE", "Industrial", "Transportation", "China"],
-    ["MLM", "NYSE", "Industrial", "Building Materials", "Bldg Prod-Cement/Aggreg"],
-    ["DE", "NYSE", "Industrial", "Machinery-Diversified", "Machinery-Farm"],
-    ["CAT", "NYSE", "Industrial", "Machinery-Constr and Mining", "Machinery-Constr and Mining"],
-    ["BLNK", "NASDAQ", "Industrial", "Machinery-Constr and Mining", "Machinery-Electric Util"],
-    ["UPS", "NYSE", "Industrial", "Transportation", "Transport-Services"],
-    ["UNP", "NYSE", "Industrial", "Transportation", "Transport-Rail"],
-    ["XPER", "NASDAQ", "Technology", "Software", "Computer Software"],
-    ["ONEM", "NASDAQ", "Technology", "Software", "Medical Information Sys"],
-    ["CRSR", "NASDAQ", "Technology", "Computers", "Computers-Other"],
-    ["ESTC", "NYSE", "Technology", "Software", "Applications Software"],
-    ["BILI", "NASDAQ", "Technology", "Software", "China"],
-    ["NTES", "NASDAQ", "Technology", "Software", "China"],
-    ["LRCX", "NASDAQ", "Technology", "Semiconductors", "Semiconductor Equipment"],
-    ["KLAC", "NASDAQ", "Technology", "Semiconductors", "Semiconductor Equipment"],
-    ["DDD", "NYSE", "Technology", "Computers", "Computers-Other"],
-    ["ATVI", "NASDAQ", "Technology", "Software", "Entertainment Software"],
-    ["MU", "NASDAQ", "Technology", "Semiconductors", "Electronic Compo-Semicon"],
-    ["ZS", "NASDAQ", "Technology", "Computers", "Computer Data Security"],
-    ["APPS", "NASDAQ", "Technology", "Software", "Software Tools"],
-    ["CYBR", "NASDAQ", "Technology", "Computers", "Computer Data Security"],
-    ["NXPI", "NASDAQ", "Technology", "Semiconductors", "Semicon Compo-Intg Circu"],
-    ["AAPL", "NASDAQ", "Technology", "Computers", "Computers"],
-    ["DDOG", "NASDAQ", "Technology", "Software", "Computer Software"],
-    ["DOCU", "NASDAQ", "Technology", "Software", "Data Processing/Mgmt"],
-    ["CRWD", "NASDAQ", "Technology", "Computers", "Computer Data Security"],
-    ["NET", "NYSE", "Technology", "Software", "Computer Software"],
-    ["QCOM", "NASDAQ", "Technology", "Semiconductors", "Semicon Compo-Intg Circu"],
-    ["TWLO", "NYSE", "Technology", "Software", "Computer Software"],
-    ["TEAM", "NASDAQ", "Technology", "Software", "Enterprise Software/Serv"],
-    ["INTU", "NASDAQ", "Technology", "Software", "Applications Software"],
-    ["SE", "NYSE", "Technology", "Software", "Entertainment Software"],
-    ["ZI", "NASDAQ", "Technology", "Software", "Computer Software"],
-    ["MDB", "NASDAQ", "Technology", "Software", "Computer Software"],
-    ["FTNT", "NASDAQ", "Technology", "Computers", "Computer Data Security"],
-    ["ADBE", "NASDAQ", "Technology", "Software", "Electronic Forms"],
-    ["FSLY", "NYSE", "Technology", "Software", "Computer Software"],
-    ["MSFT", "NASDAQ", "Technology", "Software", "Applications Software"],
-    ["NVDA", "NASDAQ", "Technology", "Semiconductors", "Electronic Compo-Semicon"],
-    ["DOYU", "NASDAQ", "Technology", "Software", "China"],
-    ["CRM", "NYSE", "Technology", "Software", "Enterprise Software/Serv"],
-    ["ZM", "NASDAQ", "Technology", "Software", "Communications Software"],
-    ["AMD", "NASDAQ", "Technology", "Semiconductors", "Electronic Compo-Semicon"],
+    ["USO", "ARCA", "etf", "energy"],
+    ["OIH", "ARCA", "etf", "energy"],
+    ["SMH", "NASDAQ", "etf", "semiconductors"],
+    ["MSOS", "ARCA", "etf", "cannabis"],
+    ["CTEC", "NASDAQ", "etf", "alternateEnergy"],
+    ["GDX", "ARCA", "goldmining", "goldmining"],
+    ["IWM", "ARCA", "etf", "stock"],
+    ["TLT", "NASDAQ", "etf", "treasuries"],
+    ["FXI", "ARCA", "etf", "china"],
+    ["KWEB", "ARCA", "etf", "china"],
+    ["MCHI", "NASDAQ", "etf", "china"],
+    ["UUP", "ARCA", "etf", "usd"],
+    ["IBB", "NASDAQ", "etf", "biotechnology"],
+    ["DIA", "ARCA", "etf", "stock"],
+    ["EEM", "ARCA", "etf", "china"],
+    ["SPY", "ARCA", "etf", "stock"],
+    ["XRT", "ARCA", "etf", "retail"],
+    ["TAN", "ARCA", "etf", "alternateEnergy"],
+    ["PBW", "ARCA", "etf", "alternateEnergy"],
+    ["ICLN", "NASDAQ", "etf", "alternateEnergy"],
+    ["ARKK", "ARCA", "etf", "software"],
+    ["IWB", "ARCA", "etf", "stock"],
+    ["YOLO", "ARCA", "etf", "cannabis"],
+    ["THCX", "ARCA", "etf", "cannabis"],
+    ["MJ", "ARCA", "etf", "cannabis"],
+    ["SLV", "ARCA", "preciousMetals", "silver"],
+    ["JO", "ARCA", "commodities", "coffee"],
+    ["XLF", "ARCA", "etf", "financial"],
+    ["XLE", "ARCA", "etf", "energy"],
+    ["QQQ", "NYSE", "etf", "technology"],
+    ["XHB", "ARCA", "etf", "homeBuilders"],
+    ["IGV", "BATS", "etf", "software"],
+    ["XLK", "ARCA", "etf", "technology"],
+    ["GLD", "ARCA", "preciousMetals", "gold"],
+    ["FNV", "NYSE", "goldmining", "goldmining"],
+    ["gold", "NYSE", "goldmining", "goldmining"],
+    ["DQ", "NYSE", "basicMaterials", "china"],
+    ["RIO", "NYSE", "basicMaterials", "mining"],
+    ["BHP", "NYSE", "uranium", "uranium"],
+    ["UUUU", "AMEX", "uranium", "uranium"],
+    ["CCJ", "NYSE", "uranium", "uranium"],
+    ["NXE", "AMEX", "uranium", "uranium"],
+    ["NEM", "NYSE", "goldmining", "goldmining"],
+    ["DADA", "NASDAQ", "communications", "internet"],
+    ["MGNI", "NASDAQ", "communications", "internet"],
+    ["BABA", "NYSE", "communications", "china"],
+    ["GDS", "NASDAQ", "communications", "china"],
+    ["IQ", "NASDAQ", "communications", "china"],
+    ["JMIA", "NYSE", "communications", "china"],
+    ["BIDU", "NASDAQ", "communications", "china"],
+    ["IRDM", "NASDAQ", "communications", "telecommunications"],
+    ["EBAY", "NASDAQ", "communications", "internet"],
+    ["CHWY", "NYSE", "communications", "internet"],
+    ["FVRR", "NYSE", "communications", "internet"],
+    ["VNET", "NASDAQ", "communications", "china"],
+    ["ROKU", "NASDAQ", "communications", "internet"],
+    ["VIPS", "NYSE", "communications", "china"],
+    ["MELI", "NASDAQ", "communications", "internet"],
+    ["MAXR", "NYSE", "communications", "telecommunications"],
+    ["ETSY", "NASDAQ", "communications", "internet"],
+    ["PINS", "NYSE", "communications", "internet"],
+    ["SNAP", "NYSE", "communications", "internet"],
+    ["Z", "NASDAQ", "communications", "internet"],
+    ["JD", "NASDAQ", "communications", "china"],
+    ["PDD", "NASDAQ", "communications", "china"],
+    ["GOOGL", "NASDAQ", "communications", "fang"],
+    ["OKTA", "NASDAQ", "technology", "software"],
+    ["FTCH", "NYSE", "communications", "internet"],
+    ["SHOP", "NYSE", "communications", "internet"],
+    ["NFLX", "NASDAQ", "communications", "fang"],
+    ["TTD", "NASDAQ", "technology", "software"],
+    ["TWTR", "NYSE", "communications", "internet"],
+    ["NFLX", "NASDAQ", "communications", "fang"],
+    ["FB", "NASDAQ", "communications", "fang"],
+    ["AMZN", "NASDAQ", "communications", "fang"],
+    ["GRWG", "NASDAQ", "cannabis", "cannabis"],
+    ["LI", "NASDAQ", "consumerCyclical", "auto"],
+    ["XPEV", "NYSE", "consumerCyclical", "auto"],
+    ["NIU", "NASDAQ", "consumerCyclical", "china"],
+    ["SPCE", "NYSE", "technology", "auto"],
+    ["PENN", "NASDAQ", "consumerCyclical", "entertainment"],
+    ["BBY", "NYSE", "consumerCyclical", "retail"],
+    ["DECK", "NYSE", "consumerCyclical", "retail"],
+    ["GPS", "NYSE", "consumerCyclical", "retail"],
+    ["HD", "NYSE", "consumerCyclical", "homeBuilders"],
+    ["LOW", "NYSE", "consumerCyclical", "homeBuilders"],
+    ["PTON", "NASDAQ", "consumerCyclical", "leisureTime"],
+    ["TSLA", "NASDAQ", "technology", "auto"],
+    ["SBUX", "NASDAQ", "consumerCyclical", "retail"],
+    ["TGT", "NYSE", "consumerCyclical", "retail"],
+    ["NIO", "NYSE", "consumerCyclical", "china"],
+    ["CHDN", "NASDAQ", "consumerCyclical", "entertainment"],
+    ["LAZR", "NASDAQ", "technology", "auto"],
+    ["BZH", "NYSE", "consumerCyclical", "homeBuilders"],
+    ["COST", "ARCA", "consumerCyclical", "retail"],
+    ["WMT", "NYSE", "consumerCyclical", "retail"],
+    ["HTHT", "NASDAQ", "consumerCyclical", "china"],
+    ["APHA", "NASDAQ", "cannabis", "cannabis"],
+    ["ACB", "NYSE", "cannabis", "cannabis"],
+    ["BGNE", "NASDAQ", "consumerNonCyclical", "china"],
+    ["TAL", "NYSE", "consumerNonCyclical", "china"],
+    ["ZLAB", "NASDAQ", "consumerNonCyclical", "china"],
+    ["TDOC", "NYSE", "technology", "software"],
+    ["VFF", "NASDAQ", "cannabis", "cannabis"],
+    ["CRON", "NASDAQ", "cannabis", "cannabis"],
+    ["PYPL", "NASDAQ", "technology", "software"],
+    ["TLRY", "NASDAQ", "cannabis", "cannabis"],
+    ["RIOT", "NASDAQ", "blockchain", "blockchain"],
+    ["SQ", "NYSE", "technology", "software"],
+    ["NVAX", "NASDAQ", "consumerNonCyclical", "biotechnology"],
+    ["CGC", "NASDAQ", "cannabis", "cannabis"],
+    ["PG", "NYSE", "consumerNonCyclical", "consumerProducts"],
+    ["ANTM", "NYSE", "consumerNonCyclical", "healthcare"],
+    ["EDU", "NYSE", "consumerNonCyclical", "china"],
+    ["MRNA", "NASDAQ", "consumerNonCyclical", "biotechnology"],
+    ["SRAC", "NASDAQ", "cannabis", "cannabis"],
+    ["MARA", "NASDAQ", "blockchain", "blockchain"],
+    ["SOL", "NYSE", "energy", "china"],
+    ["FCEL", "NASDAQ", "energy", "alternateEnergy"],
+    ["PLUG", "NASDAQ", "energy", "alternateEnergy"],
+    ["ENPH", "NASDAQ", "energy", "alternateEnergy"],
+    ["SPWR", "NASDAQ", "energy", "alternateEnergy"],
+    ["CSIQ", "NASDAQ", "energy", "alternateEnergy"],
+    ["FSLR", "NASDAQ", "energy", "alternateEnergy"],
+    ["RUN", "NASDAQ", "energy", "alternateEnergy"],
+    ["SEDG", "NASDAQ", "energy", "alternateEnergy"],
+    ["JKS", "NYSE", "energy", "china"],
+    ["LMND", "NYSE", "financial", "insurance"],
+    ["FUTU", "NASDAQ", "financial", "china"],
+    ["JPM", "NYSE", "financial", "banks"],
+    ["IIPR", "NYSE", "financial", "reits"],
+    ["ZTO", "NYSE", "industrial", "china"],
+    ["MLM", "NYSE", "industrial", "buildingMaterials"],
+    ["DE", "NYSE", "industrial", "machinery"],
+    ["CAT", "NYSE", "industrial", "machinery"],
+    ["BLNK", "NASDAQ", "energy", "alternateEnergy"],
+    ["UPS", "NYSE", "industrial", "transportation"],
+    ["UNP", "NYSE", "industrial", "transportation"],
+    ["XPER", "NASDAQ", "technology", "software"],
+    ["ONEM", "NASDAQ", "technology", "software"],
+    ["CRSR", "NASDAQ", "technology", "computers"],
+    ["ESTC", "NYSE", "technology", "software"],
+    ["BILI", "NASDAQ", "technology", "china"],
+    ["NTES", "NASDAQ", "technology", "china"],
+    ["LRCX", "NASDAQ", "technology", "semiconductors"],
+    ["KLAC", "NASDAQ", "technology", "semiconductors"],
+    ["DDD", "NYSE", "technology", "computers"],
+    ["ATVI", "NASDAQ", "technology", "software"],
+    ["MU", "NASDAQ", "technology", "semiconductors"],
+    ["ZS", "NASDAQ", "technology", "cybersecurity"],
+    ["APPS", "NASDAQ", "technology", "software"],
+    ["CYBR", "NASDAQ", "technology", "cybersecurity"],
+    ["NXPI", "NASDAQ", "technology", "semiconductors"],
+    ["AAPL", "NASDAQ", "technology", "computers"],
+    ["DDOG", "NASDAQ", "technology", "software"],
+    ["DOCU", "NASDAQ", "technology", "software"],
+    ["CRWD", "NASDAQ", "technology", "cybersecurity"],
+    ["NET", "NYSE", "technology", "software"],
+    ["QCOM", "NASDAQ", "technology", "semiconductors"],
+    ["TWLO", "NYSE", "technology", "software"],
+    ["TEAM", "NASDAQ", "technology", "software"],
+    ["INTU", "NASDAQ", "technology", "software"],
+    ["SE", "NYSE", "technology", "software"],
+    ["ZI", "NASDAQ", "technology", "software"],
+    ["MDB", "NASDAQ", "technology", "software"],
+    ["FTNT", "NASDAQ", "technology", "cybersecurity"],
+    ["ADBE", "NASDAQ", "technology", "software"],
+    ["FSLY", "NYSE", "technology", "software"],
+    ["MSFT", "NASDAQ", "technology", "software"],
+    ["NVDA", "NASDAQ", "technology", "semiconductors"],
+    ["DOYU", "NASDAQ", "technology", "china"],
+    ["CRM", "NYSE", "technology", "software"],
+    ["ZM", "NASDAQ", "technology", "software"],
+    ["AMD", "NASDAQ", "technology", "semiconductors"]
 ]
-
-# from operator import itemgetter
-# sorted(industry_category_subcategory, key=itemgetter(2))
-
-# industries = []
-# categories = []
-# subcategories = []
-# for stock in range(len(industry_category_subcategory)):
-#     if industry_category_subcategory[stock][2] not in industries:
-#         industries.append(industry_category_subcategory[stock][2])
-#     if industry_category_subcategory[stock][3] not in categories:
-#         categories.append(industry_category_subcategory[stock][3])
-#     if industry_category_subcategory[stock][4] not in subcategories:
-#         subcategories.append(industry_category_subcategory[stock][4])
-# print(f'''
-#
-# Industries: {industries}
-#
-# Categories: {categories}
-#
-# Subcategories: {subcategories}''')
-
-# Industry = 0
-# Basic_Materials = 0
-# Communications = 0
-# Consumer_Cyclical = 0
-# Consumer_Noncyclical = 0
-# Diversified = 0
-# Energy = 0
-# Financial = 0
-# Industrial = 0
-# Technology = 0
-# for stock in range(len(industry_category_subcategory)):
-#     if industry_category_subcategory[stock][2] == 'Industry':
-#         Industry += 1
-#     if industry_category_subcategory[stock][2] == 'Basic Materials':
-#         Basic_Materials += 1
-#     if industry_category_subcategory[stock][2] == 'Communications':
-#         Communications += 1
-#     if industry_category_subcategory[stock][2] == 'Consumer, Cyclical':
-#         Consumer_Cyclical += 1
-#     if industry_category_subcategory[stock][2] == 'Consumer, Non-cyclical':
-#         Consumer_Noncyclical += 1
-#     if industry_category_subcategory[stock][2] == 'Diversified':
-#         Diversified += 1
-#     if industry_category_subcategory[stock][2] == 'Energy':
-#         Energy += 1
-#     if industry_category_subcategory[stock][2] == 'Financial':
-#         Financial += 1
-#     if industry_category_subcategory[stock][2] == 'Industrial':
-#         Industrial += 1
-#     if industry_category_subcategory[stock][2] == 'Technology':
-#         Technology += 1
-#
-# total = (Industry + Basic_Materials + Communications + Consumer_Cyclical + Consumer_Noncyclical +
-# Diversified + Energy + Financial + Industrial + Technology)
-#
-# print(f'''
-# Industry = {Industry}, {round((Industry/total)*100, 2)}%
-# Basic_Materials = {Basic_Materials}, {round((Basic_Materials/total)*100, 2)}%
-# Communications = {Communications}, {round((Communications/total)*100, 2)}%
-# Consumer_Cyclical = {Consumer_Cyclical}, {round((Consumer_Cyclical/total)*100, 2)}%
-# Consumer_Noncyclical = {Consumer_Noncyclical}, {round((Consumer_Noncyclical/total)*100, 2)}%
-# Diversified = {Diversified}, {round((Diversified/total)*100, 2)}%
-# Energy = {Energy}, {round((Energy/total)*100, 2)}%
-# Financial = {Financial}, {round((Financial/total)*100, 2)}%
-# Industrial = {Industrial}, {round((Industrial/total)*100, 2)}%
-# Technology = {Technology}, {round((Technology/total)*100, 2)}%
-# Total = {total}''')
-
