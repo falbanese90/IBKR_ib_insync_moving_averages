@@ -23,6 +23,20 @@ def accountAndPositions():
         ]
     return acctSum
 
+googl = Stock('GOOGL', 'SMART', 'USD')
+print(util.tree(ib.qualifyContracts(googl)))
+
+
+
+# print(util.tree(ib.reqSecDefOptParams('GOOGL', '', 'STK', 208813719)))
+
+
+
+
+
+
+
+
 # googl = Stock('GOOGL', 'SMART', 'USD', primaryExchange = 'NASDAQ')
 # details = ib.reqContractDetails(googl)
 # details_dict = util.tree(details)
