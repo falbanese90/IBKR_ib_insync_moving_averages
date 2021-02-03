@@ -24,3 +24,12 @@ conditions?
 1) Upload directly to twitter or stocktwits.
 2) Autonomous paper trading.
 3) Autonmous live trading.
+
+Trading program will execute trades at 2 - 4% of account in a diversified manner while using moving averages as support / resistance levels. Play with option chains next to determine which contracts and strike prices to buy.
+
+
+Option Related Documentation Attention grabbers to explore:
+
+*reqSecDefOptParams() - get option chain (list)
+
+calculateImpliedVolatility()
